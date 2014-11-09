@@ -16,6 +16,7 @@
 		4998F6651A0EF81C0032C245 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4998F6641A0EF81C0032C245 /* Images.xcassets */; };
 		4998F6681A0EF81C0032C245 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4998F6661A0EF81C0032C245 /* LaunchScreen.xib */; };
 		4998F6741A0EF81C0032C245 /* Lemming_PartyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4998F6731A0EF81C0032C245 /* Lemming_PartyTests.m */; };
+		7ED75BB81A0EFC9000DD97E2 /* sand-particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		4998F66D1A0EF81C0032C245 /* Lemming-PartyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lemming-PartyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4998F6721A0EF81C0032C245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4998F6731A0EF81C0032C245 /* Lemming_PartyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Lemming_PartyTests.m; sourceTree = "<group>"; };
+		7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sand-particle.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				4998F6571A0EF81C0032C245 /* AppDelegate.m */,
 				4998F6591A0EF81C0032C245 /* GameScene.h */,
 				4998F65A1A0EF81C0032C245 /* GameScene.m */,
+				7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */,
 				4998F65C1A0EF81C0032C245 /* GameScene.sks */,
 				4998F65E1A0EF81C0032C245 /* GameViewController.h */,
 				4998F65F1A0EF81C0032C245 /* GameViewController.m */,
@@ -209,6 +212,7 @@
 			files = (
 				4998F6681A0EF81C0032C245 /* LaunchScreen.xib in Resources */,
 				4998F6651A0EF81C0032C245 /* Images.xcassets in Resources */,
+				7ED75BB81A0EFC9000DD97E2 /* sand-particle.png in Resources */,
 				4998F65D1A0EF81C0032C245 /* GameScene.sks in Resources */,
 				4998F6631A0EF81C0032C245 /* Main.storyboard in Resources */,
 			);
@@ -422,6 +426,7 @@
 				4998F6791A0EF81C0032C245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4998F67A1A0EF81C0032C245 /* Build configuration list for PBXNativeTarget "Lemming-PartyTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +435,7 @@
 				4998F67C1A0EF81C0032C245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

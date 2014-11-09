@@ -12,14 +12,9 @@
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+ 
     
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 65;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
     
-    [self addChild:myLabel];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -28,18 +23,20 @@
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+        SKSpriteNode *sand = [SKSpriteNode spriteNodeWithImageNamed:@"sand-particle"];
         
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
+        sand.xScale = 2.0;
+        sand.yScale = 2.0;
+        sand.position = location;
         
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
         
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
+    
+        [self addChild:sand];
     }
+    
+}
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    
 }
 
 -(void)update:(CFTimeInterval)currentTime {
