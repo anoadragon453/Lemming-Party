@@ -18,3 +18,6 @@
 NSMutableArray *sandParticles ;
 BOOL stillHolding;
 NSMutableArray *lemmingArray;
+
+// World node - add every sprite to this
+SKNode *world;

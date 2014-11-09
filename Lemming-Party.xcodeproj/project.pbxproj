@@ -22,6 +22,17 @@
 		49AE59911A0EFC6000798B97 /* platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 49AE59901A0EFC6000798B97 /* platform.png */; };
 		49AE59931A0EFECC00798B97 /* lemming.png in Resources */ = {isa = PBXBuildFile; fileRef = 49AE59921A0EFECC00798B97 /* lemming.png */; };
 		49D068111A0F149100D4E21A /* cliff.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068101A0F149100D4E21A /* cliff.png */; };
+		49D068131A0F168E00D4E21A /* planet.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068121A0F168E00D4E21A /* planet.png */; };
+		49D068171A0F1BC000D4E21A /* cave goes on.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068141A0F1BC000D4E21A /* cave goes on.png */; };
+		49D068181A0F1BC000D4E21A /* caveback.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068151A0F1BC000D4E21A /* caveback.png */; };
+		49D068191A0F1BC000D4E21A /* cavefront yeha.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068161A0F1BC000D4E21A /* cavefront yeha.png */; };
+		49D0681E1A0F260E00D4E21A /* shittiercloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D0681C1A0F260E00D4E21A /* shittiercloud.png */; };
+		49D0681F1A0F260E00D4E21A /* shittycloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D0681D1A0F260E00D4E21A /* shittycloud.png */; };
+		49D068261A0F26CB00D4E21A /* lemmingsicon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068211A0F26CB00D4E21A /* lemmingsicon-58.png */; };
+		49D068271A0F26CB00D4E21A /* lemmingsicon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068221A0F26CB00D4E21A /* lemmingsicon-80.png */; };
+		49D068281A0F26CB00D4E21A /* lemmingsicon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068231A0F26CB00D4E21A /* lemmingsicon-87.png */; };
+		49D068291A0F26CB00D4E21A /* lemmingsicon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068241A0F26CB00D4E21A /* lemmingsicon-120.png */; };
+		49D0682A1A0F26CB00D4E21A /* lemmingsicon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068251A0F26CB00D4E21A /* lemmingsicon-180.png */; };
 		7ED75BB81A0EFC9000DD97E2 /* sand-particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +69,17 @@
 		49AE59901A0EFC6000798B97 /* platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform.png; sourceTree = "<group>"; };
 		49AE59921A0EFECC00798B97 /* lemming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lemming.png; sourceTree = "<group>"; };
 		49D068101A0F149100D4E21A /* cliff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cliff.png; sourceTree = "<group>"; };
+		49D068121A0F168E00D4E21A /* planet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planet.png; sourceTree = "<group>"; };
+		49D068141A0F1BC000D4E21A /* cave goes on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cave goes on.png"; sourceTree = "<group>"; };
+		49D068151A0F1BC000D4E21A /* caveback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = caveback.png; sourceTree = "<group>"; };
+		49D068161A0F1BC000D4E21A /* cavefront yeha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cavefront yeha.png"; sourceTree = "<group>"; };
+		49D0681C1A0F260E00D4E21A /* shittiercloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shittiercloud.png; sourceTree = "<group>"; };
+		49D0681D1A0F260E00D4E21A /* shittycloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shittycloud.png; sourceTree = "<group>"; };
+		49D068211A0F26CB00D4E21A /* lemmingsicon-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lemmingsicon-58.png"; sourceTree = "<group>"; };
+		49D068221A0F26CB00D4E21A /* lemmingsicon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lemmingsicon-80.png"; sourceTree = "<group>"; };
+		49D068231A0F26CB00D4E21A /* lemmingsicon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lemmingsicon-87.png"; sourceTree = "<group>"; };
+		49D068241A0F26CB00D4E21A /* lemmingsicon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lemmingsicon-120.png"; sourceTree = "<group>"; };
+		49D068251A0F26CB00D4E21A /* lemmingsicon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lemmingsicon-180.png"; sourceTree = "<group>"; };
 		7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sand-particle.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,12 +177,19 @@
 		49AE598C1A0EFC2600798B97 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				49D068201A0F26B900D4E21A /* App Icon */,
 				497F2B5B1A0F03200018261A /* spaceship.png */,
 				49AE598E1A0EFC5300798B97 /* sky.png */,
 				49AE59901A0EFC6000798B97 /* platform.png */,
 				49AE59921A0EFECC00798B97 /* lemming.png */,
 				497F2B5D1A0F08BA0018261A /* cliff-center.png */,
 				49D068101A0F149100D4E21A /* cliff.png */,
+				49D068121A0F168E00D4E21A /* planet.png */,
+				49D068141A0F1BC000D4E21A /* cave goes on.png */,
+				49D068151A0F1BC000D4E21A /* caveback.png */,
+				49D068161A0F1BC000D4E21A /* cavefront yeha.png */,
+				49D0681C1A0F260E00D4E21A /* shittiercloud.png */,
+				49D0681D1A0F260E00D4E21A /* shittycloud.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -170,6 +199,18 @@
 			children = (
 			);
 			name = Audio;
+			sourceTree = "<group>";
+		};
+		49D068201A0F26B900D4E21A /* App Icon */ = {
+			isa = PBXGroup;
+			children = (
+				49D068211A0F26CB00D4E21A /* lemmingsicon-58.png */,
+				49D068221A0F26CB00D4E21A /* lemmingsicon-80.png */,
+				49D068231A0F26CB00D4E21A /* lemmingsicon-87.png */,
+				49D068241A0F26CB00D4E21A /* lemmingsicon-120.png */,
+				49D068251A0F26CB00D4E21A /* lemmingsicon-180.png */,
+			);
+			name = "App Icon";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,16 +295,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				4998F6681A0EF81C0032C245 /* LaunchScreen.xib in Resources */,
+				49D0681E1A0F260E00D4E21A /* shittiercloud.png in Resources */,
+				49D0681F1A0F260E00D4E21A /* shittycloud.png in Resources */,
+				49D068181A0F1BC000D4E21A /* caveback.png in Resources */,
+				49D068261A0F26CB00D4E21A /* lemmingsicon-58.png in Resources */,
 				49AE598F1A0EFC5300798B97 /* sky.png in Resources */,
 				4998F6651A0EF81C0032C245 /* Images.xcassets in Resources */,
 				497F2B5F1A0F08BA0018261A /* cliff-center.png in Resources */,
+				49D068171A0F1BC000D4E21A /* cave goes on.png in Resources */,
 				497F2B5C1A0F03200018261A /* spaceship.png in Resources */,
 				7ED75BB81A0EFC9000DD97E2 /* sand-particle.png in Resources */,
 				49D068111A0F149100D4E21A /* cliff.png in Resources */,
 				4998F65D1A0EF81C0032C245 /* GameScene.sks in Resources */,
+				49D068191A0F1BC000D4E21A /* cavefront yeha.png in Resources */,
 				49AE59911A0EFC6000798B97 /* platform.png in Resources */,
+				49D068131A0F168E00D4E21A /* planet.png in Resources */,
 				49AE59931A0EFECC00798B97 /* lemming.png in Resources */,
 				4998F6631A0EF81C0032C245 /* Main.storyboard in Resources */,
+				49D068291A0F26CB00D4E21A /* lemmingsicon-120.png in Resources */,
+				49D068281A0F26CB00D4E21A /* lemmingsicon-87.png in Resources */,
+				49D068271A0F26CB00D4E21A /* lemmingsicon-80.png in Resources */,
+				49D0682A1A0F26CB00D4E21A /* lemmingsicon-180.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
