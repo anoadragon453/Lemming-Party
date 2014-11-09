@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		497F2B5C1A0F03200018261A /* spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 497F2B5B1A0F03200018261A /* spaceship.png */; };
 		497F2B5F1A0F08BA0018261A /* cliff-center.png in Resources */ = {isa = PBXBuildFile; fileRef = 497F2B5D1A0F08BA0018261A /* cliff-center.png */; };
-		497F2B601A0F08BA0018261A /* cliff.png in Resources */ = {isa = PBXBuildFile; fileRef = 497F2B5E1A0F08BA0018261A /* cliff.png */; };
 		4998F6551A0EF81C0032C245 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4998F6541A0EF81C0032C245 /* main.m */; };
 		4998F6581A0EF81C0032C245 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4998F6571A0EF81C0032C245 /* AppDelegate.m */; };
 		4998F65B1A0EF81C0032C245 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4998F65A1A0EF81C0032C245 /* GameScene.m */; };
@@ -22,6 +21,7 @@
 		49AE598F1A0EFC5300798B97 /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 49AE598E1A0EFC5300798B97 /* sky.png */; };
 		49AE59911A0EFC6000798B97 /* platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 49AE59901A0EFC6000798B97 /* platform.png */; };
 		49AE59931A0EFECC00798B97 /* lemming.png in Resources */ = {isa = PBXBuildFile; fileRef = 49AE59921A0EFECC00798B97 /* lemming.png */; };
+		49D0680F1A0F10CF00D4E21A /* cliff.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D0680E1A0F10CF00D4E21A /* cliff.png */; };
 		7ED75BB81A0EFC9000DD97E2 /* sand-particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +38,6 @@
 /* Begin PBXFileReference section */
 		497F2B5B1A0F03200018261A /* spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spaceship.png; sourceTree = "<group>"; };
 		497F2B5D1A0F08BA0018261A /* cliff-center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cliff-center.png"; sourceTree = "<group>"; };
-		497F2B5E1A0F08BA0018261A /* cliff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cliff.png; sourceTree = "<group>"; };
 		4998F64F1A0EF81C0032C245 /* Lemming-Party.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lemming-Party.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4998F6531A0EF81C0032C245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4998F6541A0EF81C0032C245 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -58,6 +57,7 @@
 		49AE598E1A0EFC5300798B97 /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
 		49AE59901A0EFC6000798B97 /* platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform.png; sourceTree = "<group>"; };
 		49AE59921A0EFECC00798B97 /* lemming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lemming.png; sourceTree = "<group>"; };
+		49D0680E1A0F10CF00D4E21A /* cliff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cliff.png; sourceTree = "<group>"; };
 		7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sand-particle.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,7 +160,7 @@
 				49AE59901A0EFC6000798B97 /* platform.png */,
 				49AE59921A0EFECC00798B97 /* lemming.png */,
 				497F2B5D1A0F08BA0018261A /* cliff-center.png */,
-				497F2B5E1A0F08BA0018261A /* cliff.png */,
+				49D0680E1A0F10CF00D4E21A /* cliff.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -259,7 +259,7 @@
 				497F2B5F1A0F08BA0018261A /* cliff-center.png in Resources */,
 				497F2B5C1A0F03200018261A /* spaceship.png in Resources */,
 				7ED75BB81A0EFC9000DD97E2 /* sand-particle.png in Resources */,
-				497F2B601A0F08BA0018261A /* cliff.png in Resources */,
+				49D0680F1A0F10CF00D4E21A /* cliff.png in Resources */,
 				4998F65D1A0EF81C0032C245 /* GameScene.sks in Resources */,
 				49AE59911A0EFC6000798B97 /* platform.png in Resources */,
 				49AE59931A0EFECC00798B97 /* lemming.png in Resources */,
