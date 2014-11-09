@@ -19,7 +19,13 @@ static const uint32_t objectCategory = 0x1 << 1;
     lemmingArray = [[NSMutableArray alloc] init];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    
+   // self.anchorPoint = CGPointMake(0.5, 0.5);
+    SKNode *myWorld = [SKNode node];
+    myWorld.name = @"world";
+    [self addChild:myWorld];
+    SKNode *camera = [SKNode node];
+    camera.name = @"camera";
+    [myWorld addChild:camera];
     // Set up the gravity
     [[self physicsWorld] setGravity:CGVectorMake(0.0, -2.0)];
     
@@ -32,7 +38,7 @@ static const uint32_t objectCategory = 0x1 << 1;
     // Create the background
     SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"sky.png"];
     background.position = CGPointMake(360, 320);
-    [self addChild:background];
+    [myWorld addChild:background];
     
     // Create the planet
     SKSpriteNode *planet = [SKSpriteNode spriteNodeWithImageNamed:@"planet.png"];
@@ -42,10 +48,11 @@ static const uint32_t objectCategory = 0x1 << 1;
     
     // Create the floor
     SKSpriteNode *floor = [SKSpriteNode spriteNodeWithImageNamed:@"platform.png"];
+    floor.name = @"floor";
     floor.position = CGPointMake(0, 80);
     floor.anchorPoint = CGPointMake(0, 0);
     floor.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"platform.png"]];
-    floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(2400, 180)];
+    floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1900, 180)];
     floor.physicsBody.dynamic = NO;
     floor.physicsBody.categoryBitMask = sceneryCategory;
     [self addChild:floor];
@@ -57,15 +64,15 @@ static const uint32_t objectCategory = 0x1 << 1;
     cliff.physicsBody = [SKPhysicsBody bodyWithTexture:cliff.texture size:cliff.texture.size];
     cliff.physicsBody.dynamic = NO;
     floor.physicsBody.categoryBitMask = sceneryCategory;
-    [self addChild:cliff];
+    [myWorld addChild:cliff];
     
     // Create the spaceship
     SKSpriteNode *spaceship = [SKSpriteNode spriteNodeWithImageNamed:@"spaceship.png"];
-    spaceship.position = CGPointMake(100, 290);
+    spaceship.position = CGPointMake(100, 350);
     spaceship.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"spaceship.png"]];
     spaceship.size = CGSizeMake(spaceship.size.width/1.25, spaceship.size.height/1.25);
     
-    [self addChild:spaceship];
+    [myWorld addChild:spaceship];
     //Create the tree
    SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"shit tree"];
    // tree.anchorPoint = CGPointMake(0, 0);
@@ -93,11 +100,11 @@ static const uint32_t objectCategory = 0x1 << 1;
     tree.physicsBody.collisionBitMask = lemmingCategory;
     tree.name = treeName;
   
-    [self addChild:tree];
+    [myWorld addChild:tree];
     
     
     // SEND IN THE LEMMINGS!!!
-    [self createAmountOfLemmings:10];
+    [self createAmountOfLemmings:10: myWorld];
 }
 
 
@@ -113,11 +120,11 @@ static const uint32_t objectCategory = 0x1 << 1;
 }
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    [self killLemming];
-    NSLog(@"Array %@", lemmingArray);
+  //  [self killLemming];
+    //NSLog(@"Array %@", lemmingArray);
 }
 //change yo
--(void)createAmountOfLemmings:(int)count {
+-(void)createAmountOfLemmings:(int)count: (SKNode *) myWorld {
     for (int i = 0; i < count; i++) {
         // Create the lemming sprite node
         SKSpriteNode *lemming = [SKSpriteNode spriteNodeWithImageNamed:@"lemming.png"];
@@ -153,7 +160,7 @@ static const uint32_t objectCategory = 0x1 << 1;
         [lemming.physicsBody setVelocity:CGVectorMake(dx,dy)];
         
         //lemming.texture.size = CGSizeMake(lemming.texture.size.width/2, lemming.texture.size.height/2);
-        [self addChild:lemming];
+        [myWorld addChild:lemming];
         
     }
 }
@@ -164,10 +171,33 @@ static const uint32_t objectCategory = 0x1 << 1;
         contact.bodyA.velocity=CGVectorMake(contact.bodyA.velocity.dx+relativeVelocity.dx*-.05, contact.bodyA.velocity.dy+relativeVelocity.dy*-.05);
     }
 }
+ // wait(10);
+
+-(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch* touch = [touches anyObject];
+    CGPoint prevLoc = [touch previousLocationInNode:self];
+    CGPoint currentLoc = [touch locationInNode:self];
+    CGPoint shift = CGPointMake(currentLoc.x-prevLoc.x, currentLoc.y-prevLoc.y);
+  //  NSLog(@"%f , %f", shift.x, shift.y);
+    SKNode* camera = [self childNodeWithName:@"world"];
+    CGPoint newPos = CGPointMake(camera.position.x+shift.x, camera.position.y);
+
+    SKSpriteNode* floor = (SKSpriteNode*)[camera childNodeWithName:@"floor"];
+    CGPoint floorPos = floor.position;
+    NSLog(@"%f , %f", floorPos.x, floorPos.y);
+    NSLog(@"%f , %f", newPos.x, newPos.y);
+
+    if(newPos.x < floorPos.x )
+        camera.position = newPos;
+    else
+        camera.position = CGPointMake(floorPos.x, newPos.y);
+
+}
 
 -(void)update:(CFTimeInterval)currentTime {
     
     /* Called before each frame is rendered */
+    
     for (SKSpriteNode *lemming in lemmingArray) {
         CGFloat rate = .05;
         if (lemming.physicsBody.velocity.dx < 0) { // if the lemming is going backwards
