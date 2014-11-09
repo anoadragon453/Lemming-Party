@@ -29,7 +29,7 @@
         sand.yScale = 2.0;
         sand.position = location;
         
-        
+        // eit
     
         [self addChild:sand];
     }
