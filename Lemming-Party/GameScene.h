@@ -16,5 +16,6 @@
 @end
 
 
-BOOL stillHolding;
+int treeTouched;
+NSString* treeName;
 NSMutableArray *lemmingArray;

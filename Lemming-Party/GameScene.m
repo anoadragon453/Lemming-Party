@@ -12,7 +12,7 @@
 
 // Bitmasks
 static const uint32_t sceneryCategory  = 0x1 << 0;  // 00000000000000000000000000000001
-static const uint32_t sandCategory = 0x1 << 1; // 00000000000000000000000000000010
+static const uint32_t objectCategory = 0x1 << 1;
 static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000000100
 
 -(void)didMoveToView:(SKView *)view {
@@ -21,8 +21,8 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     // Set up the gravity
     [[self physicsWorld] setGravity:CGVectorMake(0.0, -2.0)];
     
-    stillHolding = true;
-    
+    treeTouched = 0;
+    treeName = @"tree";
     // Create a rectangle around the screen borders
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
     self.physicsWorld.contactDelegate = self;
@@ -57,7 +57,20 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     
     [self addChild:spaceship];
     //Create the tree
-   // SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"shit tree"];
+   SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"shit tree"];
+   // tree.anchorPoint = CGPointMake(0, 0);
+    tree.position = CGPointMake(518, 250);
+    tree.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"shit tree.png"]];
+   // CGSize treeBodySize = CGSizeMake(30, 130);
+    tree.physicsBody = [SKPhysicsBody bodyWithTexture:tree.texture size:tree.size];
+
+   
+
+    tree.physicsBody.allowsRotation = NO;
+    tree.physicsBody.categoryBitMask = objectCategory;
+    tree.name = treeName;
+  
+    [self addChild:tree];
     
     
     // SEND IN THE LEMMINGS!!!
@@ -67,12 +80,14 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        NSLog(@"%f , %f", location.x, location.y);
-       // [self createSand:location];
-            }
-    
+    UITouch* touch = [touches anyObject];
+    CGPoint location = [touch locationInNode:self];
+    NSLog(@"%f , %f", location.x, location.y);
+    SKPhysicsBody* body = [self.physicsWorld bodyAtPoint:location];
+    if(body && [body.node.name isEqualToString:treeName]){
+        treeTouched++;
+        NSLog(@"%d", treeTouched);
+    }
     
 }
 
@@ -80,14 +95,13 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     
     for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
+        
        // [self createSand:location];
         
     }
 }
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
 
     }
     
