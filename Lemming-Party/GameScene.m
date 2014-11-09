@@ -116,6 +116,7 @@ static const uint32_t objectCategory = 0x1 << 1;
     [self killLemming];
     NSLog(@"Array %@", lemmingArray);
 }
+//change yo
 -(void)createAmountOfLemmings:(int)count {
     for (int i = 0; i < count; i++) {
         // Create the lemming sprite node
