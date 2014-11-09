@@ -438,6 +438,9 @@ AVAudioPlayer *player;
         for(SKSpriteNode* lemming in lemmingArray)
             [lemming.physicsBody setVelocity:CGVectorMake(15, 15)];
         
+        }
+       
+
     }
     
 }
