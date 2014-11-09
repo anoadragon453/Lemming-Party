@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "CaveScene.h"
+
 @implementation GameScene
 
 // Bitmasks
@@ -33,7 +34,7 @@ AVAudioPlayer *player;
     rate = .05;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     // self.anchorPoint = CGPointMake(0.5, 0.5);
-    SKNode *myWorld = [SKNode node];
+    myWorld = [SKNode node];
     myWorld.name = @"world";
     [self addChild:myWorld];
     SKNode *camera = [SKNode node];
@@ -155,6 +156,8 @@ AVAudioPlayer *player;
             caveEntranceFront.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:caveRect];
             caveEntranceFront.physicsBody.categoryBitMask = caveCategory;
             caveEntranceFront.physicsBody.collisionBitMask = lemmingCategory | sceneryCategory;
+            caveEntranceFront.physicsBody.affectedByGravity = NO;
+            caveEntranceFront.physicsBody.dynamic = NO;
             caveEntranceFront.name = @"cave";
             [myWorld addChild:caveEntranceFront];
             
@@ -272,9 +275,10 @@ AVAudioPlayer *player;
             tree2.physicsBody.categoryBitMask = objectCategory;
             tree2.physicsBody.collisionBitMask = lemmingCategory;
             tree2.physicsBody.dynamic = NO;
+            tree2.physicsBody.affectedByGravity = NO;
             tree2.name = treeName;
             [trees addObject:tree2];
-            [[self childNodeWithName:@"world"] addChild:tree2];
+            [myWorld addChild:tree2];
             return;
             
         }
@@ -293,10 +297,11 @@ AVAudioPlayer *player;
             tree3.physicsBody.mass = 9999999999;
             tree3.physicsBody.categoryBitMask = objectCategory;
             tree3.physicsBody.collisionBitMask = lemmingCategory;
+            tree3.physicsBody.affectedByGravity = NO;
             tree3.physicsBody.dynamic = NO;
             tree3.name = treeName;
             [trees addObject:tree3];
-            [[self childNodeWithName:@"world"] addChild:tree3];
+            [myWorld addChild:tree3];
             return;
             
         }
@@ -323,7 +328,7 @@ AVAudioPlayer *player;
             stump.physicsBody.affectedByGravity = NO;
             stump.name = @"stump";
             // [trees addObject:tree3];
-            [[self childNodeWithName:@"world"] addChild:stump];
+            [myWorld addChild:stump];
             
             SKSpriteNode *treetop = [SKSpriteNode spriteNodeWithImageNamed:@"treetop.png"];
             
@@ -346,7 +351,7 @@ AVAudioPlayer *player;
             treetop.physicsBody.affectedByGravity = YES;
             treetop.name = @"treetop";
             // [trees addObject:tree3];
-            [[self childNodeWithName:@"world"] addChild:treetop];
+            [myWorld addChild:treetop];
             
             return;
             
@@ -497,6 +502,14 @@ AVAudioPlayer *player;
         } else {
             //[lemming.physicsBody applyImpulse:CGVectorMake(lemming.physicsBody.velocity.dx/2, 0.0)];
         }
+        if (lemmingArray.count == 0) {
+            [self transitionToCave];
+        }
+        if (lemming.physicsBody.velocity.dx < 0.1) {
+            lemming.xScale = -1.0;
+        } else if (lemming.physicsBody.velocity.dx > 0.1){
+            lemming.xScale = 1.0;
+        }
     }
     
     for (SKSpriteNode *star in starArray) {
@@ -557,6 +570,13 @@ AVAudioPlayer *player;
             [queuePlayer insertItem:obj afterItem:nil];
         }
     }
+}
+
+-(void)transitionToCave {
+    CaveScene *scene = [[CaveScene alloc] initWithSize:self.size];
+    SKTransition *transition = [SKTransition flipVerticalWithDuration:0.5];
+    scene.scaleMode = SKSceneScaleModeAspectFill;
+    [self.view presentScene:scene transition:transition];
 }
 
 @end

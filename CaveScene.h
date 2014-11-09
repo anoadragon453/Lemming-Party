@@ -7,7 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+@import AVFoundation;
 
-@interface CaveScene : SKScene
+@interface CaveScene : SKScene <AVAudioPlayerDelegate>
 
 @end

@@ -36,3 +36,5 @@ int planetTouched;
 NSMutableArray *starArray;
 NSMutableArray *musicArray;
 CMMotionManager *_myMotionManager;
+
+SKNode *myWorld;

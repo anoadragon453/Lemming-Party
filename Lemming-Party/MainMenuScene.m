@@ -25,7 +25,7 @@
     background.size = CGSizeMake(screenRect.size.width * 1.4, screenRect.size.height * 1.4);
     [self addChild:background];
     
-    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(showPlayButton) userInfo:nil repeats:NO];
+    [self showPlayButton];
 }
 
 
@@ -73,15 +73,14 @@
     fireNode.position = CGPointMake(screenRect.size.width/2 + 150,300);
     fireNode.alpha = 0;
     [self addChild:fireNode];
-    [UIView animateWithDuration:1.5f
-                          delay:0.0f
-                        options:UIViewAnimationOptionCurveEaseInOut
-                     animations:^{
-                         fireNode.alpha = 1.0;
-                     }
-                     completion:^(BOOL finished){
-                         
-                     }];
+    
+    SKAction *wait = [SKAction waitForDuration:1.75];
+    SKAction *fadeIn = [SKAction fadeInWithDuration:1.0];
+    
+    SKAction *sequence = [SKAction sequence:@[wait, fadeIn]];
+    
+    [fireNode runAction: sequence];
+    
     //[fireNode.physicsBody applyImpulse:CGVectorMake(10, 10)];
     fireNode.name = @"fireButtonNode";//how the node is identified later
     fireNode.zPosition = 1.0;
