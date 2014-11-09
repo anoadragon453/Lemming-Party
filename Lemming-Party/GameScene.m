@@ -23,8 +23,8 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     // Set up the gravity
     [[self physicsWorld] setGravity:CGVectorMake(0.0, -2.0)];
     
-    stillHolding = true;
-    
+    treeTouched = 0;
+    treeName = @"tree";
     // Create a rectangle around the screen borders
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
     self.physicsWorld.contactDelegate = self;
@@ -65,6 +65,22 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     spaceship.size = CGSizeMake(spaceship.size.width/1.25, spaceship.size.height/1.25);
     
     [self addChild:spaceship];
+    //Create the tree
+   SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"shit tree"];
+   // tree.anchorPoint = CGPointMake(0, 0);
+    tree.position = CGPointMake(518, 250);
+    tree.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"shit tree.png"]];
+   // CGSize treeBodySize = CGSizeMake(30, 130);
+    tree.physicsBody = [SKPhysicsBody bodyWithTexture:tree.texture size:tree.size];
+
+   
+
+    tree.physicsBody.allowsRotation = NO;
+    tree.physicsBody.categoryBitMask = objectCategory;
+    tree.name = treeName;
+  
+    [self addChild:tree];
+    
     
     // SEND IN THE LEMMINGS!!!
     [self createAmountOfLemmings:10];

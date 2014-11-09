@@ -126,6 +126,7 @@
 				4998F6571A0EF81C0032C245 /* AppDelegate.m */,
 				4998F6591A0EF81C0032C245 /* GameScene.h */,
 				4998F65A1A0EF81C0032C245 /* GameScene.m */,
+				7EB4D1BC1A0F2E67004462D4 /* shit tree.png */,
 				7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */,
 				4998F65C1A0EF81C0032C245 /* GameScene.sks */,
 				4998F65E1A0EF81C0032C245 /* GameViewController.h */,

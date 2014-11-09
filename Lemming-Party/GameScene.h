@@ -16,7 +16,8 @@
 @end
 
 
-BOOL stillHolding;
+int treeTouched;
+NSString* treeName;
 NSMutableArray *lemmingArray;
 
 // World node - add every sprite to this
