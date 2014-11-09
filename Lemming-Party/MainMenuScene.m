@@ -58,25 +58,29 @@
     //if fire button touched, bring the rain
     if ([node.name isEqualToString:@"fireButtonNode"]) {
         //do whatever...
+        NSLog(@"Button Pushed");
     }
 }
 
 -(void)showPlayButton {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     SKSpriteNode *fireNode = [SKSpriteNode spriteNodeWithImageNamed:@"play-button.png"];
-    fireNode.position = CGPointMake(screenRect.size.width/2,-300);
-    [UIView animateWithDuration:0.5f
+    fireNode.position = CGPointMake(screenRect.size.width/2 + 150,300);
+    fireNode.alpha = 0;
+    [self addChild:fireNode];
+    [UIView animateWithDuration:1.5f
                           delay:0.0f
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-                         fireNode.position = CGPointMake(fireNode.position.x,300);
+                         fireNode.alpha = 1.0;
                      }
                      completion:^(BOOL finished){
                          
                      }];
+    //[fireNode.physicsBody applyImpulse:CGVectorMake(10, 10)];
     fireNode.name = @"fireButtonNode";//how the node is identified later
     fireNode.zPosition = 1.0;
-    [self addChild:fireNode];
+    
 }
 
 @end
