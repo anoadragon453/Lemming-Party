@@ -12,19 +12,39 @@
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
     
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 65;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
-    
-    [self addChild:myLabel];
+    // Get screen size and height
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
     
     // Create the background
     SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"sky.png"];
     background.position = CGPointMake(360, 320);
     [self addChild:background];
+    
+    // Create the floor
+    SKSpriteNode *floor = [SKSpriteNode spriteNodeWithImageNamed:@"platform.png"];
+    floor.position = CGPointMake(0, 80);
+    floor.anchorPoint = CGPointMake(0, 0);
+    [self addChild:floor];
+    
+    // SEND IN THE LEMMINGS!!!
+    [self createAmountOfLemmings:10];
+}
+
+-(void)createAmountOfLemmings:(int)count {
+    for (int i = 0; i < count; i++) {
+        // Create the lemming sprite node
+        SKSpriteNode *lemming = [SKSpriteNode spriteNodeWithImageNamed:@"lemming.png"];
+        lemming.position = CGPointMake(200, 300);
+        [lemmingArray addObject:lemming];
+        
+        
+        
+        [self addChild:lemming];
+        
+    }
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
