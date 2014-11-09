@@ -38,7 +38,7 @@
             [sandParticles addObject:sand];
             [self addChild:sand];
     }
-        [self performSelector:@selector(longPress:) withObject:[NSValue valueWithCGPoint:location] afterDelay:1.0];
+        [self performSelector:@selector(longPress:) withObject:[NSValue valueWithCGPoint:location] afterDelay:.5];
     }
    
     
@@ -62,8 +62,7 @@
         [sandParticles addObject:sand];
         [self addChild:sand];
         }
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(longPress:) object:[NSValue valueWithCGPoint:location]];
-        
+     
     }
 }
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
