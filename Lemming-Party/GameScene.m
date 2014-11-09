@@ -56,6 +56,9 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     spaceship.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"spaceship.png"]];
     
     [self addChild:spaceship];
+    //Create the tree
+   // SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"shit tree"];
+    
     
     // SEND IN THE LEMMINGS!!!
     [self createAmountOfLemmings:10];
@@ -66,7 +69,7 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
-       
+        NSLog(@"%f , %f", location.x, location.y);
        // [self createSand:location];
             }
     
@@ -110,6 +113,7 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
 }
 
 -(void)update:(CFTimeInterval)currentTime {
+    
  
     /* Called before each frame is rendered */
 }
