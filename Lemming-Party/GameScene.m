@@ -21,6 +21,7 @@ CGFloat rate;
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
     lemmingArray = [[NSMutableArray alloc] init];
+    trees = [[NSMutableArray alloc] init];
     lemmingBackwards = NO;
     rate = .05;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -89,12 +90,13 @@ CGFloat rate;
     
     [myWorld addChild:spaceship];
     //Create the tree
-    SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"shit tree"];
+    SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"tree1"];
     // tree.anchorPoint = CGPointMake(0, 0);
     tree.position = CGPointMake(518, 350);
-    tree.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"shit tree.png"]];
+    tree.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"tree1.png"]];
     // CGSize treeBodySize = CGSizeMake(30, 130);
     tree.physicsBody = [SKPhysicsBody bodyWithTexture:tree.texture size:tree.size];
+    [trees addObject:tree];
     for(int i = 0; i <10 ; i++){
         SKSpriteNode *lemmingLife = [SKSpriteNode spriteNodeWithImageNamed:@"lemming"];
         lemmingLife.position = CGPointMake(20*(i+1), 650);
@@ -133,9 +135,69 @@ CGFloat rate;
     //[self delete:lifeIcon];
 }
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch* touch = [touches anyObject];
+    CGPoint location = [touch locationInNode:[self childNodeWithName:@"world"]];
+    SKPhysicsBody* body = [self.physicsWorld bodyAtPoint:location];
+    if(body && [body.node.name isEqualToString:@"tree"]){
+        
     
-  //  [self killLemming];
-    //NSLog(@"Array %@", lemmingArray);
+    
+    treeTouched++;
+    if(treeTouched == 1){
+        SKSpriteNode *tree = [trees objectAtIndex:0];
+        [tree removeFromParent];
+        [trees removeAllObjects];
+        
+  
+        
+    
+        SKSpriteNode *tree2 = [SKSpriteNode spriteNodeWithImageNamed:@"tree2"];
+        // tree.anchorPoint = CGPointMake(0, 0);
+        tree2.position = CGPointMake(518, 350);
+        tree2.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"tree2.png"]];
+        // CGSize treeBodySize = CGSizeMake(30, 130);
+        tree2.physicsBody = [SKPhysicsBody bodyWithTexture:tree2.texture size:tree2.size];
+        tree2.physicsBody.allowsRotation = NO;
+        tree2.physicsBody.mass = 9999999999;
+        tree2.physicsBody.categoryBitMask = objectCategory;
+        tree2.physicsBody.collisionBitMask = lemmingCategory;
+        tree2.physicsBody.dynamic = NO;
+        tree2.name = treeName;
+        [trees addObject:tree2];
+        [[self childNodeWithName:@"world"] addChild:tree2];
+        return;
+
+    }
+        if(treeTouched == 2){
+            SKSpriteNode *tree = [trees objectAtIndex:0];
+            [tree removeFromParent];
+            [trees removeAllObjects];
+            
+            
+            
+            
+            SKSpriteNode *tree3 = [SKSpriteNode spriteNodeWithImageNamed:@"tree3"];
+            // tree.anchorPoint = CGPointMake(0, 0);
+            tree3.position = CGPointMake(518, 350);
+            tree3.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"tree3.png"]];
+            // CGSize treeBodySize = CGSizeMake(30, 130);
+            tree3.physicsBody = [SKPhysicsBody bodyWithTexture:tree3.texture size:tree3.size];
+            tree3.physicsBody.allowsRotation = NO;
+            tree3.physicsBody.mass = 9999999999;
+            tree3.physicsBody.categoryBitMask = objectCategory;
+            tree3.physicsBody.collisionBitMask = lemmingCategory;
+            tree3.physicsBody.dynamic = NO;
+            tree3.name = treeName;
+            [trees addObject:tree3];
+            [[self childNodeWithName:@"world"] addChild:tree3];
+            return;
+            
+        }
+
+    }
+}
+-(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    
 }
 //change yo
 -(void)createAmountOfLemmings:(int)count: (SKNode *) myWorld {
@@ -196,7 +258,6 @@ CGFloat rate;
         rate *= -1;
     }
 }
- // wait(10);
 
 -(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     UITouch* touch = [touches anyObject];
