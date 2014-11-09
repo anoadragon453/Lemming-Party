@@ -36,6 +36,8 @@
 		49D71AFD1A0F880B002BD9E5 /* woodcut.wav in Resources */ = {isa = PBXBuildFile; fileRef = 49D71AFA1A0F880B002BD9E5 /* woodcut.wav */; };
 		49D71AFF1A0F8826002BD9E5 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D71AFE1A0F8826002BD9E5 /* star.png */; };
 		49D71B011A0F8884002BD9E5 /* caveback.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D71B001A0F8884002BD9E5 /* caveback.png */; };
+		7E04733A1A0F9BD200F27AF3 /* CaveScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0473391A0F9BD200F27AF3 /* CaveScene.m */; };
+		7EAF691C1A0F9B9F00C8906A /* CaveScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7EAF691B1A0F9B9F00C8906A /* CaveScene.sks */; };
 		7EB4D1BD1A0F2E68004462D4 /* shit tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB4D1BC1A0F2E67004462D4 /* shit tree.png */; };
 		7EB4D1BF1A0F53AE004462D4 /* cliff ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB4D1BE1A0F53AE004462D4 /* cliff ground.png */; };
 		7EB4D1C11A0F567A004462D4 /* tree1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB4D1C01A0F567A004462D4 /* tree1.png */; };
@@ -44,6 +46,7 @@
 		7EB4D1C71A0F5C66004462D4 /* tree3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB4D1C61A0F5C66004462D4 /* tree3.png */; };
 		7EB4D1CA1A0F5F1F004462D4 /* treestump.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB4D1C81A0F5F1F004462D4 /* treestump.png */; };
 		7EB4D1CB1A0F5F1F004462D4 /* treetop.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB4D1C91A0F5F1F004462D4 /* treetop.png */; };
+		7EB4D1D01A0F94A8004462D4 /* cavebgback.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB4D1CF1A0F94A8004462D4 /* cavebgback.png */; };
 		7ED75BB81A0EFC9000DD97E2 /* sand-particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +97,9 @@
 		49D71AFA1A0F880B002BD9E5 /* woodcut.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = woodcut.wav; sourceTree = "<group>"; };
 		49D71AFE1A0F8826002BD9E5 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		49D71B001A0F8884002BD9E5 /* caveback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = caveback.png; sourceTree = "<group>"; };
+		7E0473381A0F9BD200F27AF3 /* CaveScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaveScene.h; sourceTree = "<group>"; };
+		7E0473391A0F9BD200F27AF3 /* CaveScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaveScene.m; sourceTree = "<group>"; };
+		7EAF691B1A0F9B9F00C8906A /* CaveScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CaveScene.sks; sourceTree = "<group>"; };
 		7EB4D1BC1A0F2E67004462D4 /* shit tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shit tree.png"; sourceTree = "<group>"; };
 		7EB4D1BE1A0F53AE004462D4 /* cliff ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cliff ground.png"; sourceTree = "<group>"; };
 		7EB4D1C01A0F567A004462D4 /* tree1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree1.png; sourceTree = "<group>"; };
@@ -102,6 +108,7 @@
 		7EB4D1C61A0F5C66004462D4 /* tree3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree3.png; sourceTree = "<group>"; };
 		7EB4D1C81A0F5F1F004462D4 /* treestump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = treestump.png; sourceTree = "<group>"; };
 		7EB4D1C91A0F5F1F004462D4 /* treetop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = treetop.png; sourceTree = "<group>"; };
+		7EB4D1CF1A0F94A8004462D4 /* cavebgback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cavebgback.png; sourceTree = "<group>"; };
 		7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sand-particle.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +133,9 @@
 		4998F6461A0EF81B0032C245 = {
 			isa = PBXGroup;
 			children = (
+				7EAF691B1A0F9B9F00C8906A /* CaveScene.sks */,
+				7E0473381A0F9BD200F27AF3 /* CaveScene.h */,
+				7E0473391A0F9BD200F27AF3 /* CaveScene.m */,
 				7EB4D1BE1A0F53AE004462D4 /* cliff ground.png */,
 				4998F6511A0EF81C0032C245 /* Lemming-Party */,
 				4998F6701A0EF81C0032C245 /* Lemming-PartyTests */,
@@ -198,6 +208,7 @@
 		49AE598B1A0EFC1E00798B97 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7EB4D1CF1A0F94A8004462D4 /* cavebgback.png */,
 				49AE598D1A0EFC2A00798B97 /* Audio */,
 				49AE598C1A0EFC2600798B97 /* Images */,
 			);
@@ -339,6 +350,7 @@
 				4998F6651A0EF81C0032C245 /* Images.xcassets in Resources */,
 				497F2B5F1A0F08BA0018261A /* cliff-center.png in Resources */,
 				49D71AFB1A0F880B002BD9E5 /* Heaven's Night.mp3 in Resources */,
+				7EAF691C1A0F9B9F00C8906A /* CaveScene.sks in Resources */,
 				49D71AFD1A0F880B002BD9E5 /* woodcut.wav in Resources */,
 				49D068171A0F1BC000D4E21A /* cave extension.png in Resources */,
 				497F2B5C1A0F03200018261A /* spaceship.png in Resources */,
@@ -353,6 +365,7 @@
 				49D068131A0F168E00D4E21A /* planet.png in Resources */,
 				7EB4D1C11A0F567A004462D4 /* tree1.png in Resources */,
 				49AE59931A0EFECC00798B97 /* lemming.png in Resources */,
+				7EB4D1D01A0F94A8004462D4 /* cavebgback.png in Resources */,
 				4998F6631A0EF81C0032C245 /* Main.storyboard in Resources */,
 				49D068291A0F26CB00D4E21A /* lemmingsicon-120.png in Resources */,
 				49D068281A0F26CB00D4E21A /* lemmingsicon-87.png in Resources */,
@@ -380,6 +393,7 @@
 				4998F6601A0EF81C0032C245 /* GameViewController.m in Sources */,
 				4998F6581A0EF81C0032C245 /* AppDelegate.m in Sources */,
 				4998F65B1A0EF81C0032C245 /* GameScene.m in Sources */,
+				7E04733A1A0F9BD200F27AF3 /* CaveScene.m in Sources */,
 				4998F6551A0EF81C0032C245 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
