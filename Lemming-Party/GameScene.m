@@ -82,27 +82,26 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     
 }
 -(void) createSand:(CGPoint ) location{
-   
-        
-        
-        SKSpriteNode *sand = [SKSpriteNode spriteNodeWithImageNamed:@"sand-particle"];
-        
-        sand.xScale = 2.0;
-        sand.yScale = 2.0;
-        float x = location.x;
+    
+    
+    
+    SKSpriteNode *sand = [SKSpriteNode spriteNodeWithImageNamed:@"sand-particle"];
+    
+    sand.xScale = 2.0;
+    sand.yScale = 2.0;
+    float x = location.x;
     float y = location.y ;
-        sand.position = CGPointMake(x, y);
-        
+    sand.position = CGPointMake(x, y);
+    
     sand.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:sand.texture.size];
-        sand.physicsBody.allowsRotation = NO;
+    sand.physicsBody.allowsRotation = NO;
     
-          sand.physicsBody.categoryBitMask = sandCategory;
+    sand.physicsBody.categoryBitMask = sandCategory;
     sand.physicsBody.contactTestBitMask = sandCategory;
-        [sandParticles addObject:sand];
-        [self addChild:sand];
-    }
-    
+    [sandParticles addObject:sand];
+    [self addChild:sand];
 }
+
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     
     for (UITouch *touch in touches) {
@@ -120,30 +119,30 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
 }
 -(void) longPress: (NSValue *) locationVal{
     CGPoint location = [locationVal CGPointValue];
-   [self createSand:location];
+    [self createSand:location];
     
 }
 -(void) didBeginContact:(SKPhysicsContact *)contact{
     SKPhysicsBody *firstBody;
     SKPhysicsBody *secondBody;
     
-
-        firstBody = contact.bodyA;
-        secondBody = contact.bodyB;
     
-  
-    if(firstBody.categoryBitMask == sandCategory){
+    firstBody = contact.bodyA;
+    secondBody = contact.bodyB;
+    
+    
+    if(firstBody.node.physicsBody.categoryBitMask == sandCategory){
         //[firstBody.node addChild:secondBody.node];
-        firstBody.node.physicsBody.resting = YES;
+        //firstBody.
         
         
         //NSLog(@"%@", contact.bodyA.node.parent);
-     //   [self delete:secondBody.node];
+        //   [self delete:secondBody.node];
         
     }
-    if(secondBody.categoryBitMask == sandCategory){
+    if(secondBody.node.physicsBody.categoryBitMask == sandCategory){
         //[firstBody.node addChild:secondBody.node];
-        secondBody.node.physicsBody.resting = YES;
+        secondBody.resting = YES;
         
         
         //NSLog(@"%@", contact.bodyA.node.parent);
@@ -172,7 +171,7 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
 }
 
 -(void)update:(CFTimeInterval)currentTime {
- 
+    
     /* Called before each frame is rendered */
     
 }
