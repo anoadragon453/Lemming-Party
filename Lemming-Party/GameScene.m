@@ -22,9 +22,9 @@
     [self addChild:myLabel];
     
     // Create the background
-    SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"rocket.png"];
-    spaceship.position = CGPointMake(100,100);
-    [self addChild: spaceship];
+    SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"sky.png"];
+    background.position = CGPointMake(360, 320);
+    [self addChild:background];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
