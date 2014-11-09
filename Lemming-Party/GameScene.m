@@ -25,7 +25,7 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     
     // Create a rectangle around the screen borders
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
-    
+    self.physicsWorld.contactDelegate = self;
     // Create the background
     SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"sky.png"];
     background.position = CGPointMake(360, 320);
@@ -73,23 +73,25 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     
 }
 -(void) createSand:(CGPoint ) location{
-    for(int i = 0; i <3; i++){
+   
         
         
         SKSpriteNode *sand = [SKSpriteNode spriteNodeWithImageNamed:@"sand-particle"];
         
         sand.xScale = 2.0;
         sand.yScale = 2.0;
-        float x = location.x+ (float)(2i);
-        float y = location.y + (float)(i);
+        float x = location.x;
+    float y = location.y ;
         sand.position = CGPointMake(x, y);
         
-        sand.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:sand.size];
+    sand.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:sand.texture.size];
         sand.physicsBody.allowsRotation = NO;
-        
+    
+          sand.physicsBody.categoryBitMask = sandCategory;
+    sand.physicsBody.contactTestBitMask = sandCategory;
         [sandParticles addObject:sand];
         [self addChild:sand];
-    }
+    
 
 }
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -108,25 +110,38 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     
 }
 -(void) longPress: (NSValue *) locationVal{
-    for(int i = 0; i <3; i++){
-        
-        
-        SKSpriteNode *sand = [SKSpriteNode spriteNodeWithImageNamed:@"sand-particle"];
-        CGPoint location = [locationVal CGPointValue];
-        sand.xScale = 2.0;
-        sand.yScale = 2.0;
-        float x = location.x+ (float)(2i);
-        float y = location.y + (float)(i);
-        sand.position = CGPointMake(x, y);
-        sand.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:sand.size];
-        sand.physicsBody.allowsRotation = NO;
-        
-        [sandParticles addObject:sand];
-        [self addChild:sand];
-    }
+    CGPoint location = [locationVal CGPointValue];
+   [self createSand:location];
     
 }
+-(void) didBeginContact:(SKPhysicsContact *)contact{
+    SKPhysicsBody *firstBody;
+    SKPhysicsBody *secondBody;
+    
 
+        firstBody = contact.bodyA;
+        secondBody = contact.bodyB;
+    
+  
+    if(firstBody.categoryBitMask == sandCategory){
+        //[firstBody.node addChild:secondBody.node];
+        firstBody.node.physicsBody.resting = YES;
+        
+        
+        //NSLog(@"%@", contact.bodyA.node.parent);
+     //   [self delete:secondBody.node];
+        
+    }
+    if(secondBody.categoryBitMask == sandCategory){
+        //[firstBody.node addChild:secondBody.node];
+        secondBody.node.physicsBody.resting = YES;
+        
+        
+        //NSLog(@"%@", contact.bodyA.node.parent);
+        //   [self delete:secondBody.node];
+        
+    }
+}
 -(void)createAmountOfLemmings:(int)count {
     for (int i = 0; i < count; i++) {
         // Create the lemming sprite node
@@ -145,6 +160,7 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
 }
 
 -(void)update:(CFTimeInterval)currentTime {
+ 
     /* Called before each frame is rendered */
 }
 
