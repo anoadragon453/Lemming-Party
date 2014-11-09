@@ -108,8 +108,6 @@ CGFloat rate;
   
     [myWorld addChild:tree];
     
-    [self addChild:tree];
-    
     // SEND IN THE LEMMINGS!!!
     [self createAmountOfLemmings:10: myWorld];
 }
