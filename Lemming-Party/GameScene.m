@@ -29,6 +29,7 @@ CGFloat rate;
     [[self physicsWorld] setGravity:CGVectorMake(0.0, -2.0)];
     
     treeTouched = 0;
+    lemmingLives = [[NSMutableArray alloc] init];
     treeName = @"tree";
     
     // Create a rectangle around the screen borders
