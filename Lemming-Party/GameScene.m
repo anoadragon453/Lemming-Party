@@ -15,6 +15,7 @@ static const uint32_t sceneryCategory  = 0x1 << 0;
 static const uint32_t objectCategory = 0x1 << 1;
 static const uint32_t lemmingCategory = 0x1 << 2;
 static const uint32_t cliffCategory = 0x1 << 3;
+static const uint32_t triangleCategory = 0x1 << 4;
 
 int lemmingBackwards;
 CGFloat rate;
@@ -23,6 +24,7 @@ AVAudioPlayer *player;
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
     lemmingArray = [[NSMutableArray alloc] init];
+    starArray = [[NSMutableArray alloc] init];
     trees = [[NSMutableArray alloc] init];
     lemmingBackwards = NO;
     rate = .05;
@@ -96,7 +98,7 @@ AVAudioPlayer *player;
     cliff.name = @"cliff";
     cliff.position = CGPointMake(900, 250);
     cliff.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"cliff.png"]];
-    cliff.physicsBody = [SKPhysicsBody bodyWithTexture:cliff.texture size:cliff.texture.size];
+    cliff.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(cliff.texture.size.width - 20, cliff.texture.size.height) ];
     cliff.physicsBody.dynamic = NO;
     cliff.physicsBody.categoryBitMask = cliffCategory;
     cliff.physicsBody.collisionBitMask = objectCategory;
@@ -118,9 +120,14 @@ AVAudioPlayer *player;
         SKSpriteNode *cliffground = [SKSpriteNode spriteNodeWithImageNamed:@"cliff ground.png"];
         cliffground.position = CGPointMake(850+i*(cliff.size.width-50), 250);
         cliffground.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"cliff ground.png"]];
-        cliffground.physicsBody = [SKPhysicsBody bodyWithTexture:cliffground.texture size:cliffground.texture.size];
+        cliffground.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:cliffground.texture.size];
         cliffground.physicsBody.dynamic = NO;
+        cliffground.physicsBody.categoryBitMask = cliffCategory;
+        cliffground.physicsBody.collisionBitMask = lemmingCategory | objectCategory;
+        cliffground.physicsBody.contactTestBitMask = lemmingCategory | objectCategory;
+        
         floor.physicsBody.categoryBitMask = sceneryCategory;
+        
         [myWorld addChild:cliffground];
         
         // Add the cave
@@ -352,10 +359,10 @@ AVAudioPlayer *player;
         lemming.physicsBody.allowsRotation = NO;
         lemming.physicsBody.categoryBitMask = lemmingCategory;
         lemming.physicsBody.contactTestBitMask = sceneryCategory;
-        lemming.physicsBody.collisionBitMask = sceneryCategory | objectCategory | lemmingCategory;
+        lemming.physicsBody.collisionBitMask = sceneryCategory | objectCategory | lemmingCategory | cliffCategory;
         lemming.physicsBody.velocity = self.physicsBody.velocity;
         lemming.physicsBody.linearDamping = 0;
-        lemming.physicsBody.friction = 5;
+        lemming.physicsBody.friction = .5;
         
         [myWorld addChild:lemming];
         
@@ -379,26 +386,30 @@ AVAudioPlayer *player;
         rate *= -1;
     }
     if((firstBody.categoryBitMask == objectCategory && secondBody.categoryBitMask == cliffCategory) || (firstBody.categoryBitMask == cliffCategory && secondBody.categoryBitMask == objectCategory)){
+        SKPhysicsBody *triangle = [SKPhysicsBody bodyWithTexture:[SKTexture textureWithImageNamed:@"triangle.png"] size:[SKTexture textureWithImageNamed:@"triangle.png"].size];
         SKSpriteNode* treetop = (SKSpriteNode *)[[self childNodeWithName:@"world"] childNodeWithName:@"treetop"];
         SKSpriteNode* stump = (SKSpriteNode *)[[self childNodeWithName:@"world"] childNodeWithName:@"stump"];
+        stump.physicsBody = triangle;
         stump.physicsBody.dynamic = NO;
+        stump.physicsBody.mass = 99999;
+        stump.physicsBody.affectedByGravity = NO;
+        stump.physicsBody = triangle;
+        stump.physicsBody.categoryBitMask = triangleCategory;
+        stump.physicsBody.collisionBitMask = 0;
+        stump.physicsBody.contactTestBitMask = 0;
+        stump.physicsBody.allowsRotation = 0;
         
-        CGSize rectSize = CGSizeMake(treetop.texture.size.width-270, treetop.texture.size.height);
+        CGSize rectSize = CGSizeMake(treetop.texture.size.width-270, treetop.texture.size.height+150);
         
         treetop.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rectSize];
         treetop.physicsBody.affectedByGravity = NO;
         treetop.physicsBody.dynamic = NO;
         
         for(SKSpriteNode* lemming in lemmingArray){
-            [lemming.physicsBody applyImpulse:CGVectorMake(5.0 , 5.0)];
+            [lemming.physicsBody applyImpulse:CGVectorMake(0,1)];
             //lemming.physicsBody.affectedByGravity = NO;
-            
-            
         }
-        
-        
     }
-    
 }
 
 -(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -437,7 +448,7 @@ AVAudioPlayer *player;
     for (SKSpriteNode *lemming in lemmingArray) {
         CMAccelerometerData* data = _myMotionManager.accelerometerData;
         if (fabs(data.acceleration.y) > 0.1) {
-            float yAcceleration = 20.0 * data.acceleration.y;
+            float yAcceleration = 30.0 * data.acceleration.y;
             float randomAccel = [self getRandomNumberBetween:1 to:100]/100.0;
             [lemming.physicsBody applyForce:CGVectorMake(yAcceleration += randomAccel, 0.0)];
         } else {
