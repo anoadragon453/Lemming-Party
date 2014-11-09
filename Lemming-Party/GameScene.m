@@ -106,12 +106,23 @@ CGFloat rate;
     [self createAmountOfLemmings:10];
 }
 
+
+-(void) killLemming{
+    SKSpriteNode *deadlemming = [lemmingArray objectAtIndex:lemmingArray.count-1];
+    [deadlemming removeFromParent];
+    [lemmingArray removeObjectAtIndex:lemmingArray.count-1];
+    //[self delete:deadlemming];
+    SKSpriteNode *lifeIcon = [lemmingLives objectAtIndex:lemmingLives.count -1];
+    [lifeIcon removeFromParent];
+    [lemmingLives removeObjectAtIndex:lemmingLives.count-1];
+    //[self delete:lifeIcon];
+}
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    
+    [self killLemming];
     NSLog(@"Array %@", lemmingArray);
 }
-
+//change yo
 -(void)createAmountOfLemmings:(int)count {
     for (int i = 0; i < count; i++) {
         // Create the lemming sprite node
