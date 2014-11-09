@@ -41,6 +41,7 @@
         [lemmingArray addObject:lemming];
         
         
+        // this is a change hi
         
         [self addChild:lemming];
         
