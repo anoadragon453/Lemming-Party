@@ -20,6 +20,11 @@
                                    CGRectGetMidY(self.frame));
     
     [self addChild:myLabel];
+    
+    // Create the background
+    SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"rocket.png"];
+    spaceship.position = CGPointMake(100,100);
+    [self addChild: spaceship];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

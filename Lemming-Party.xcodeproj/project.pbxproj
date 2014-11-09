@@ -16,6 +16,8 @@
 		4998F6651A0EF81C0032C245 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4998F6641A0EF81C0032C245 /* Images.xcassets */; };
 		4998F6681A0EF81C0032C245 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4998F6661A0EF81C0032C245 /* LaunchScreen.xib */; };
 		4998F6741A0EF81C0032C245 /* Lemming_PartyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4998F6731A0EF81C0032C245 /* Lemming_PartyTests.m */; };
+		49AE598F1A0EFC5300798B97 /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 49AE598E1A0EFC5300798B97 /* sky.png */; };
+		49AE59911A0EFC6000798B97 /* platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 49AE59901A0EFC6000798B97 /* platform.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		4998F66D1A0EF81C0032C245 /* Lemming-PartyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lemming-PartyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4998F6721A0EF81C0032C245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4998F6731A0EF81C0032C245 /* Lemming_PartyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Lemming_PartyTests.m; sourceTree = "<group>"; };
+		49AE598E1A0EFC5300798B97 /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
+		49AE59901A0EFC6000798B97 /* platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 				4998F6611A0EF81C0032C245 /* Main.storyboard */,
 				4998F6641A0EF81C0032C245 /* Images.xcassets */,
 				4998F6661A0EF81C0032C245 /* LaunchScreen.xib */,
+				49AE598B1A0EFC1E00798B97 /* Resources */,
 				4998F6521A0EF81C0032C245 /* Supporting Files */,
 			);
 			path = "Lemming-Party";
@@ -125,6 +130,31 @@
 				4998F6721A0EF81C0032C245 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49AE598B1A0EFC1E00798B97 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				49AE598D1A0EFC2A00798B97 /* Audio */,
+				49AE598C1A0EFC2600798B97 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		49AE598C1A0EFC2600798B97 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				49AE598E1A0EFC5300798B97 /* sky.png */,
+				49AE59901A0EFC6000798B97 /* platform.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		49AE598D1A0EFC2A00798B97 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,8 +238,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4998F6681A0EF81C0032C245 /* LaunchScreen.xib in Resources */,
+				49AE598F1A0EFC5300798B97 /* sky.png in Resources */,
 				4998F6651A0EF81C0032C245 /* Images.xcassets in Resources */,
 				4998F65D1A0EF81C0032C245 /* GameScene.sks in Resources */,
+				49AE59911A0EFC6000798B97 /* platform.png in Resources */,
 				4998F6631A0EF81C0032C245 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +454,7 @@
 				4998F6791A0EF81C0032C245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4998F67A1A0EF81C0032C245 /* Build configuration list for PBXNativeTarget "Lemming-PartyTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +463,7 @@
 				4998F67C1A0EF81C0032C245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
