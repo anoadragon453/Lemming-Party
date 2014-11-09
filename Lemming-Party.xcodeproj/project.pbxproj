@@ -16,6 +16,9 @@
 		4998F6651A0EF81C0032C245 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4998F6641A0EF81C0032C245 /* Images.xcassets */; };
 		4998F6681A0EF81C0032C245 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4998F6661A0EF81C0032C245 /* LaunchScreen.xib */; };
 		4998F6741A0EF81C0032C245 /* Lemming_PartyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4998F6731A0EF81C0032C245 /* Lemming_PartyTests.m */; };
+		49AE598F1A0EFC5300798B97 /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 49AE598E1A0EFC5300798B97 /* sky.png */; };
+		49AE59911A0EFC6000798B97 /* platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 49AE59901A0EFC6000798B97 /* platform.png */; };
+		49AE59931A0EFECC00798B97 /* lemming.png in Resources */ = {isa = PBXBuildFile; fileRef = 49AE59921A0EFECC00798B97 /* lemming.png */; };
 		7ED75BB81A0EFC9000DD97E2 /* sand-particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +49,9 @@
 		4998F66D1A0EF81C0032C245 /* Lemming-PartyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lemming-PartyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4998F6721A0EF81C0032C245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4998F6731A0EF81C0032C245 /* Lemming_PartyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Lemming_PartyTests.m; sourceTree = "<group>"; };
+		49AE598E1A0EFC5300798B97 /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
+		49AE59901A0EFC6000798B97 /* platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform.png; sourceTree = "<group>"; };
+		49AE59921A0EFECC00798B97 /* lemming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lemming.png; sourceTree = "<group>"; };
 		7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sand-particle.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
