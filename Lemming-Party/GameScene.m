@@ -231,10 +231,8 @@ CGFloat rate;
             
             treetop.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"treetop"]];
             // CGSize treeBodySize = CGSizeMake(30, 130);
-            
-            treetop.physicsBody = [SKPhysicsBody bodyWithTexture:treetop.texture size:treetop.size];
-           
-            //treetop.anchorPoint = CGPointMake(0, 0);
+            CGSize rectSize = CGSizeMake(treetop.texture.size.width-200, treetop.texture.size.height-150);
+            treetop.physicsBody = [SKPhysicsBody bodyWithTexture:treetop.texture size:treetop.texture.size];            //treetop.anchorPoint = CGPointMake(0, 0);
             //treetop.physicsBody.allowsRotation = NO;
             treetop.physicsBody.mass = 15;
             treetop.physicsBody.categoryBitMask = objectCategory;
@@ -320,11 +318,22 @@ CGFloat rate;
     if((firstBody.categoryBitMask == objectCategory && secondBody.categoryBitMask == cliffCategory) || (firstBody.categoryBitMask == cliffCategory && secondBody.categoryBitMask == objectCategory)){
         SKSpriteNode* treetop = (SKSpriteNode *)[[self childNodeWithName:@"world"] childNodeWithName:@"treetop"];
     SKSpriteNode* stump = (SKSpriteNode *)[[self childNodeWithName:@"world"] childNodeWithName:@"stump"];
-
-       
-        for(SKSpriteNode* lemming in lemmingArray)
-        [lemming.physicsBody setVelocity:CGVectorMake(15, 15)];
+        stump.physicsBody.dynamic = NO;
         
+                    CGSize rectSize = CGSizeMake(treetop.texture.size.width-270, treetop.texture.size.height);
+  
+        treetop.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rectSize];
+        treetop.physicsBody.affectedByGravity = NO;
+              treetop.physicsBody.dynamic = NO;
+       
+        for(SKSpriteNode* lemming in lemmingArray){
+            [lemming.physicsBody applyImpulse:CGVectorMake(5.0 , 5.0)];
+            //lemming.physicsBody.affectedByGravity = NO;
+            
+        
+        }
+       
+
     }
 
 }
