@@ -65,7 +65,17 @@ AVAudioPlayer *player;
     treeName = @"tree";
     
     // Create a rectangle around the screen borders
-    self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+    //self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+    
+    // Make an invisible wall to the very left.
+    SKSpriteNode *leftWall = [SKSpriteNode spriteNodeWithColor:[UIColor clearColor] size:CGSizeMake(5, 1000)];
+    leftWall.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"star.png"]];
+    leftWall.position = CGPointMake(0, 0);
+    leftWall.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(5, 3000)];
+    leftWall.physicsBody.affectedByGravity = NO;
+    leftWall.physicsBody.allowsRotation = NO;
+    //[myWorld addChild:leftWall];
+    
     self.physicsWorld.contactDelegate = self;
     // Create the background
     SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"sky.png"];

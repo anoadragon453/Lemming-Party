@@ -22,6 +22,11 @@
 		49AE59931A0EFECC00798B97 /* lemming.png in Resources */ = {isa = PBXBuildFile; fileRef = 49AE59921A0EFECC00798B97 /* lemming.png */; };
 		49C465EA1A0F9175006DFBCF /* triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C465E91A0F9175006DFBCF /* triangle.png */; };
 		49C465EC1A0F9570006DFBCF /* We Like To Party.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49C465EB1A0F9570006DFBCF /* We Like To Party.mp3 */; };
+		49C465EE1A0F9B38006DFBCF /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 49C465ED1A0F9B38006DFBCF /* MainMenuScene.sks */; };
+		49C465F11A0F9B65006DFBCF /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C465F01A0F9B65006DFBCF /* MainMenuScene.m */; };
+		49C465F31A0F9C2C006DFBCF /* menu-theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49C465F21A0F9C2C006DFBCF /* menu-theme.mp3 */; };
+		49C465F51A0F9D36006DFBCF /* menu-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C465F41A0F9D36006DFBCF /* menu-image.png */; };
+		49C465F71A0FA0AD006DFBCF /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C465F61A0FA0AD006DFBCF /* play-button.png */; };
 		49D068111A0F149100D4E21A /* cliff.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068101A0F149100D4E21A /* cliff.png */; };
 		49D068131A0F168E00D4E21A /* planet.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068121A0F168E00D4E21A /* planet.png */; };
 		49D068171A0F1BC000D4E21A /* cave extension.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068141A0F1BC000D4E21A /* cave extension.png */; };
@@ -79,6 +84,12 @@
 		49AE59921A0EFECC00798B97 /* lemming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lemming.png; sourceTree = "<group>"; };
 		49C465E91A0F9175006DFBCF /* triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle.png; sourceTree = "<group>"; };
 		49C465EB1A0F9570006DFBCF /* We Like To Party.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "We Like To Party.mp3"; sourceTree = "<group>"; };
+		49C465ED1A0F9B38006DFBCF /* MainMenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenuScene.sks; sourceTree = "<group>"; };
+		49C465EF1A0F9B65006DFBCF /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuScene.h; sourceTree = "<group>"; };
+		49C465F01A0F9B65006DFBCF /* MainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuScene.m; sourceTree = "<group>"; };
+		49C465F21A0F9C2C006DFBCF /* menu-theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "menu-theme.mp3"; sourceTree = "<group>"; };
+		49C465F41A0F9D36006DFBCF /* menu-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-image.png"; sourceTree = "<group>"; };
+		49C465F61A0FA0AD006DFBCF /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
 		49D068101A0F149100D4E21A /* cliff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cliff.png; sourceTree = "<group>"; };
 		49D068121A0F168E00D4E21A /* planet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planet.png; sourceTree = "<group>"; };
 		49D068141A0F1BC000D4E21A /* cave extension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cave extension.png"; sourceTree = "<group>"; };
@@ -147,6 +158,9 @@
 				4998F6571A0EF81C0032C245 /* AppDelegate.m */,
 				4998F6591A0EF81C0032C245 /* GameScene.h */,
 				4998F65A1A0EF81C0032C245 /* GameScene.m */,
+				49C465EF1A0F9B65006DFBCF /* MainMenuScene.h */,
+				49C465F01A0F9B65006DFBCF /* MainMenuScene.m */,
+				49C465ED1A0F9B38006DFBCF /* MainMenuScene.sks */,
 				4998F65C1A0EF81C0032C245 /* GameScene.sks */,
 				4998F65E1A0EF81C0032C245 /* GameViewController.h */,
 				4998F65F1A0EF81C0032C245 /* GameViewController.m */,
@@ -199,9 +213,11 @@
 			children = (
 				49D068201A0F26B900D4E21A /* App Icon */,
 				497F2B5B1A0F03200018261A /* spaceship.png */,
+				49C465F41A0F9D36006DFBCF /* menu-image.png */,
 				49C465E91A0F9175006DFBCF /* triangle.png */,
 				49AE598E1A0EFC5300798B97 /* sky.png */,
 				49AE59921A0EFECC00798B97 /* lemming.png */,
+				49C465F61A0FA0AD006DFBCF /* play-button.png */,
 				497F2B5D1A0F08BA0018261A /* cliff-center.png */,
 				49D068101A0F149100D4E21A /* cliff.png */,
 				49D068121A0F168E00D4E21A /* planet.png */,
@@ -227,6 +243,7 @@
 				49D71AF81A0F880B002BD9E5 /* Heaven's Night.mp3 */,
 				49C465EB1A0F9570006DFBCF /* We Like To Party.mp3 */,
 				49D71AFA1A0F880B002BD9E5 /* woodcut.wav */,
+				49C465F21A0F9C2C006DFBCF /* menu-theme.mp3 */,
 			);
 			name = Audio;
 			sourceTree = "<group>";
@@ -328,6 +345,7 @@
 				49D0681E1A0F260E00D4E21A /* shittiercloud.png in Resources */,
 				7EB4D1C31A0F56DC004462D4 /* tree2.png in Resources */,
 				7EB4D1C51A0F5822004462D4 /* platform.png in Resources */,
+				49C465F51A0F9D36006DFBCF /* menu-image.png in Resources */,
 				49D0681F1A0F260E00D4E21A /* shittycloud.png in Resources */,
 				49D068261A0F26CB00D4E21A /* lemmingsicon-58.png in Resources */,
 				49AE598F1A0EFC5300798B97 /* sky.png in Resources */,
@@ -342,7 +360,10 @@
 				49D068111A0F149100D4E21A /* cliff.png in Resources */,
 				4998F65D1A0EF81C0032C245 /* GameScene.sks in Resources */,
 				7EB4D1BF1A0F53AE004462D4 /* cliff ground.png in Resources */,
+				49C465F31A0F9C2C006DFBCF /* menu-theme.mp3 in Resources */,
 				49D71AFF1A0F8826002BD9E5 /* star.png in Resources */,
+				49C465F71A0FA0AD006DFBCF /* play-button.png in Resources */,
+				49C465EE1A0F9B38006DFBCF /* MainMenuScene.sks in Resources */,
 				7EB4D1CB1A0F5F1F004462D4 /* treetop.png in Resources */,
 				49D068191A0F1BC000D4E21A /* cavefront.png in Resources */,
 				49D068131A0F168E00D4E21A /* planet.png in Resources */,
@@ -374,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4998F6601A0EF81C0032C245 /* GameViewController.m in Sources */,
+				49C465F11A0F9B65006DFBCF /* MainMenuScene.m in Sources */,
 				4998F6581A0EF81C0032C245 /* AppDelegate.m in Sources */,
 				4998F65B1A0EF81C0032C245 /* GameScene.m in Sources */,
 				4998F6551A0EF81C0032C245 /* main.m in Sources */,
