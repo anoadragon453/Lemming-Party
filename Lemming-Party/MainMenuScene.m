@@ -59,7 +59,10 @@
     //if fire button touched, bring the rain
     if ([node.name isEqualToString:@"fireButtonNode"]) {
         //do whatever...
-        
+        GameScene *scene = [[GameScene alloc] initWithSize:self.size];
+        SKTransition *transition = [SKTransition flipVerticalWithDuration:1.5];
+        scene.scaleMode = SKSceneScaleModeAspectFill;
+        [self.view presentScene:scene transition:transition];
     }
 }
 

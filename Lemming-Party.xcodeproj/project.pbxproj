@@ -25,8 +25,8 @@
 		49C465EE1A0F9B38006DFBCF /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 49C465ED1A0F9B38006DFBCF /* MainMenuScene.sks */; };
 		49C465F11A0F9B65006DFBCF /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C465F01A0F9B65006DFBCF /* MainMenuScene.m */; };
 		49C465F31A0F9C2C006DFBCF /* menu-theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 49C465F21A0F9C2C006DFBCF /* menu-theme.mp3 */; };
-		49C465F51A0F9D36006DFBCF /* menu-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C465F41A0F9D36006DFBCF /* menu-image.png */; };
 		49C465F71A0FA0AD006DFBCF /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C465F61A0FA0AD006DFBCF /* play-button.png */; };
+		49C465F91A0FA8DA006DFBCF /* menu-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C465F81A0FA8DA006DFBCF /* menu-image.png */; };
 		49D068111A0F149100D4E21A /* cliff.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068101A0F149100D4E21A /* cliff.png */; };
 		49D068131A0F168E00D4E21A /* planet.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068121A0F168E00D4E21A /* planet.png */; };
 		49D068171A0F1BC000D4E21A /* cave extension.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068141A0F1BC000D4E21A /* cave extension.png */; };
@@ -91,8 +91,8 @@
 		49C465EF1A0F9B65006DFBCF /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuScene.h; sourceTree = "<group>"; };
 		49C465F01A0F9B65006DFBCF /* MainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuScene.m; sourceTree = "<group>"; };
 		49C465F21A0F9C2C006DFBCF /* menu-theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "menu-theme.mp3"; sourceTree = "<group>"; };
-		49C465F41A0F9D36006DFBCF /* menu-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-image.png"; sourceTree = "<group>"; };
 		49C465F61A0FA0AD006DFBCF /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
+		49C465F81A0FA8DA006DFBCF /* menu-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-image.png"; sourceTree = "<group>"; };
 		49D068101A0F149100D4E21A /* cliff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cliff.png; sourceTree = "<group>"; };
 		49D068121A0F168E00D4E21A /* planet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planet.png; sourceTree = "<group>"; };
 		49D068141A0F1BC000D4E21A /* cave extension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cave extension.png"; sourceTree = "<group>"; };
@@ -224,11 +224,11 @@
 			children = (
 				49D068201A0F26B900D4E21A /* App Icon */,
 				497F2B5B1A0F03200018261A /* spaceship.png */,
-				49C465F41A0F9D36006DFBCF /* menu-image.png */,
 				49C465E91A0F9175006DFBCF /* triangle.png */,
 				49AE598E1A0EFC5300798B97 /* sky.png */,
 				49AE59921A0EFECC00798B97 /* lemming.png */,
 				49C465F61A0FA0AD006DFBCF /* play-button.png */,
+				49C465F81A0FA8DA006DFBCF /* menu-image.png */,
 				497F2B5D1A0F08BA0018261A /* cliff-center.png */,
 				49D068101A0F149100D4E21A /* cliff.png */,
 				49D068121A0F168E00D4E21A /* planet.png */,
@@ -356,7 +356,6 @@
 				49D0681E1A0F260E00D4E21A /* shittiercloud.png in Resources */,
 				7EB4D1C31A0F56DC004462D4 /* tree2.png in Resources */,
 				7EB4D1C51A0F5822004462D4 /* platform.png in Resources */,
-				49C465F51A0F9D36006DFBCF /* menu-image.png in Resources */,
 				49D0681F1A0F260E00D4E21A /* shittycloud.png in Resources */,
 				49D068261A0F26CB00D4E21A /* lemmingsicon-58.png in Resources */,
 				49AE598F1A0EFC5300798B97 /* sky.png in Resources */,
@@ -385,6 +384,7 @@
 				49AE59931A0EFECC00798B97 /* lemming.png in Resources */,
 				7EB4D1D01A0F94A8004462D4 /* cavebgback.png in Resources */,
 				4998F6631A0EF81C0032C245 /* Main.storyboard in Resources */,
+				49C465F91A0FA8DA006DFBCF /* menu-image.png in Resources */,
 				49D068291A0F26CB00D4E21A /* lemmingsicon-120.png in Resources */,
 				49D068281A0F26CB00D4E21A /* lemmingsicon-87.png in Resources */,
 				7EB4D1CA1A0F5F1F004462D4 /* treestump.png in Resources */,
