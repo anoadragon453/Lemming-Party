@@ -11,3 +11,5 @@
 @interface GameScene : SKScene
 
 @end
+
+NSMutableArray *lemmingArray;
