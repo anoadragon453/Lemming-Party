@@ -7,6 +7,7 @@
 //
 
 #import "MainMenuScene.h"
+#import "GameScene.h"
 
 @implementation MainMenuScene
 
@@ -59,6 +60,10 @@
     if ([node.name isEqualToString:@"fireButtonNode"]) {
         //do whatever...
         NSLog(@"Button Pushed");
+        GameScene *scene = [[GameScene alloc] initWithSize:self.size];
+        SKTransition *transition = [SKTransition flipVerticalWithDuration:0.5];
+        scene.scaleMode = SKSceneScaleModeAspectFill;
+        [self.view presentScene:scene transition:transition];
     }
 }
 

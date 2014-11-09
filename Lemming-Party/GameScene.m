@@ -15,7 +15,8 @@ static const uint32_t sceneryCategory  = 0x1 << 0;
 static const uint32_t objectCategory = 0x1 << 1;
 static const uint32_t lemmingCategory = 0x1 << 2;
 static const uint32_t cliffCategory = 0x1 << 3;
-static const uint31_t caveCategory = 0x1 <<4;
+static const uint32_t caveCategory = 0x1 <<4;
+static const uint32_t triangleCategory = 0x1 <<5;
 
 int lemmingBackwards;
 CGFloat rate;
@@ -257,7 +258,7 @@ AVAudioPlayer *player;
             
             
             
-            SKSpriteNode *tree2 = [SKSpriteNode spriteNodeWithImageNamed:@"tree2"];
+            SKSpriteNode *tree2 = [SKSpriteNode spriteNodeWithImageNamed:@"tree2.png"];
             // tree.anchorPoint = CGPointMake(0, 0);
             tree2.position = CGPointMake(435, 350);
             tree2.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"tree2.png"]];
@@ -279,10 +280,7 @@ AVAudioPlayer *player;
             [tree removeFromParent];
             [trees removeAllObjects];
             
-            
-            
-            
-            SKSpriteNode *tree3 = [SKSpriteNode spriteNodeWithImageNamed:@"tree3"];
+            SKSpriteNode *tree3 = [SKSpriteNode spriteNodeWithImageNamed:@"tree3.png"];
             // tree.anchorPoint = CGPointMake(0, 0);
             tree3.position = CGPointMake(435, 350);
             tree3.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"tree3.png"]];
@@ -305,7 +303,7 @@ AVAudioPlayer *player;
             [tree removeFromParent];
             [trees removeAllObjects];
             
-            SKSpriteNode *stump = [SKSpriteNode spriteNodeWithImageNamed:@"treestump"];
+            SKSpriteNode *stump = [SKSpriteNode spriteNodeWithImageNamed:@"treestump.png"];
             
             stump.position = CGPointMake(435, 370-height/2);
             
@@ -324,11 +322,11 @@ AVAudioPlayer *player;
             // [trees addObject:tree3];
             [[self childNodeWithName:@"world"] addChild:stump];
             
-            SKSpriteNode *treetop = [SKSpriteNode spriteNodeWithImageNamed:@"treetop"];
+            SKSpriteNode *treetop = [SKSpriteNode spriteNodeWithImageNamed:@"treetop.png"];
             
             treetop.position = CGPointMake(440, (treetop.size.height)/2+(stump.texture.size.height)+(390-height/2));
             
-            treetop.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"treetop"]];
+            treetop.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"treetop.png"]];
             // CGSize treeBodySize = CGSizeMake(30, 130);
             
             treetop.physicsBody = [SKPhysicsBody bodyWithTexture:treetop.texture size:treetop.size];
