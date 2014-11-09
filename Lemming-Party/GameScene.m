@@ -20,7 +20,7 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     
     // Set up the gravity
     [[self physicsWorld] setGravity:CGVectorMake(0.0, -2.0)];
-    sandParticles = [[NSMutableArray alloc] init] ;
+    
     stillHolding = true;
     
     // Create a rectangle around the screen borders
@@ -67,80 +67,30 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
        
-        [self createSand:location];
+       // [self createSand:location];
             }
     
     
 }
--(void) createSand:(CGPoint ) location{
-   
-        
-        
-        SKSpriteNode *sand = [SKSpriteNode spriteNodeWithImageNamed:@"sand-particle"];
-        
-        sand.xScale = 2.0;
-        sand.yScale = 2.0;
-        float x = location.x;
-    float y = location.y ;
-        sand.position = CGPointMake(x, y);
-        
-    sand.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:sand.texture.size];
-        sand.physicsBody.allowsRotation = NO;
-    
-          sand.physicsBody.categoryBitMask = sandCategory;
-    sand.physicsBody.contactTestBitMask = sandCategory;
-        [sandParticles addObject:sand];
-        [self addChild:sand];
-    
 
-}
+
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
-        [self createSand:location];
+       // [self createSand:location];
         
     }
 }
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(longPress:) object:[NSValue valueWithCGPoint:location]];
+
     }
-    
-}
--(void) longPress: (NSValue *) locationVal{
-    CGPoint location = [locationVal CGPointValue];
-   [self createSand:location];
     
 }
 -(void) didBeginContact:(SKPhysicsContact *)contact{
-    SKPhysicsBody *firstBody;
-    SKPhysicsBody *secondBody;
-    
 
-        firstBody = contact.bodyA;
-        secondBody = contact.bodyB;
-    
-  
-    if(firstBody.categoryBitMask == sandCategory){
-        //[firstBody.node addChild:secondBody.node];
-        firstBody.node.physicsBody.resting = YES;
-        
-        
-        //NSLog(@"%@", contact.bodyA.node.parent);
-     //   [self delete:secondBody.node];
-        
-    }
-    if(secondBody.categoryBitMask == sandCategory){
-        //[firstBody.node addChild:secondBody.node];
-        secondBody.node.physicsBody.resting = YES;
-        
-        
-        //NSLog(@"%@", contact.bodyA.node.parent);
-        //   [self delete:secondBody.node];
-        
-    }
 }
 -(void)createAmountOfLemmings:(int)count {
     for (int i = 0; i < count; i++) {
