@@ -184,7 +184,7 @@ AVAudioPlayer *player;
     [myWorld addChild:tree];
     
     // SEND IN THE LEMMINGS!!!
-    [self createAmountOfLemmings:10 withWorld:myWorld];
+    [self createAmountOfLemmings:0 withWorld:myWorld];
 }
 
 
@@ -432,11 +432,19 @@ AVAudioPlayer *player;
     }
     if((firstBody.categoryBitMask == objectCategory && secondBody.categoryBitMask == cliffCategory) || (firstBody.categoryBitMask == cliffCategory && secondBody.categoryBitMask == objectCategory)){
         SKSpriteNode* treetop = (SKSpriteNode *)[[self childNodeWithName:@"world"] childNodeWithName:@"treetop"];
-        SKSpriteNode* stump = (SKSpriteNode *)[[self childNodeWithName:@"world"] childNodeWithName:@"stump"];
+    SKSpriteNode* stump = (SKSpriteNode *)[[self childNodeWithName:@"world"] childNodeWithName:@"stump"];
+        stump.physicsBody.dynamic = NO;
         
-        
-        for(SKSpriteNode* lemming in lemmingArray)
-            [lemming.physicsBody setVelocity:CGVectorMake(15, 15)];
+                    CGSize rectSize = CGSizeMake(treetop.texture.size.width-270, treetop.texture.size.height);
+  
+        treetop.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rectSize];
+        treetop.physicsBody.affectedByGravity = NO;
+              treetop.physicsBody.dynamic = NO;
+       
+        for(SKSpriteNode* lemming in lemmingArray){
+            [lemming.physicsBody applyImpulse:CGVectorMake(5.0 , 5.0)];
+            //lemming.physicsBody.affectedByGravity = NO;
+            
         
         }
        
