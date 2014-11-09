@@ -92,8 +92,8 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
         float x = location.x+ (float)(2i);
         float y = location.y + (float)(i);
         sand.position = CGPointMake(x, y);
-        float width = sand.size.width;
-        sand.physicsBody = [SKPhysicsBody bodyWithEdgeFromPoint:CGPointMake(0, 0) toPoint:CGPointMake(width, 0)];
+        
+        sand.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:sand.size];
         sand.physicsBody.allowsRotation = NO;
         
         [sandParticles addObject:sand];
