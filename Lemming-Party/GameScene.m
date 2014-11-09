@@ -14,6 +14,7 @@
 static const uint32_t sceneryCategory  = 0x1 << 0;
 static const uint32_t objectCategory = 0x1 << 1;
 static const uint32_t lemmingCategory = 0x1 << 2;
+static const uint32_t cliffCategory = 0x1 << 3;
 
 int lemmingBackwards;
 CGFloat rate;
@@ -71,7 +72,8 @@ CGFloat rate;
     cliff.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"cliff.png"]];
     cliff.physicsBody = [SKPhysicsBody bodyWithTexture:cliff.texture size:cliff.texture.size];
     cliff.physicsBody.dynamic = NO;
-    floor.physicsBody.categoryBitMask = sceneryCategory;
+    cliff.physicsBody.categoryBitMask = cliffCategory;
+    cliff.physicsBody.collisionBitMask = objectCategory;
     [myWorld addChild:cliff];
     for(int i = 1; i <6; i++){
     SKSpriteNode *cliffground = [SKSpriteNode spriteNodeWithImageNamed:@"cliff ground.png"];
@@ -79,7 +81,8 @@ CGFloat rate;
     cliffground.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"cliff ground.png"]];
     cliffground.physicsBody = [SKPhysicsBody bodyWithTexture:cliffground.texture size:cliffground.texture.size];
     cliffground.physicsBody.dynamic = NO;
-    floor.physicsBody.categoryBitMask = sceneryCategory;
+    cliffground.physicsBody.categoryBitMask = cliffCategory;
+        cliffground.physicsBody.collisionBitMask = objectCategory;
     [myWorld addChild:cliffground];
     }
     
@@ -230,13 +233,15 @@ CGFloat rate;
             // CGSize treeBodySize = CGSizeMake(30, 130);
             
             treetop.physicsBody = [SKPhysicsBody bodyWithTexture:treetop.texture size:treetop.size];
+           
             //treetop.anchorPoint = CGPointMake(0, 0);
             //treetop.physicsBody.allowsRotation = NO;
             treetop.physicsBody.mass = 15;
             treetop.physicsBody.categoryBitMask = objectCategory;
-            treetop.physicsBody.collisionBitMask = lemmingCategory;
-            treetop.physicsBody.collisionBitMask = objectCategory;
-                       [treetop.physicsBody applyTorque:5.0];
+       
+            treetop.physicsBody.collisionBitMask = objectCategory | cliffCategory | lemmingCategory;
+            treetop.physicsBody.contactTestBitMask = cliffCategory;
+                       [treetop.physicsBody applyTorque:8.0];
             treetop.physicsBody.dynamic = YES;
             treetop.physicsBody.affectedByGravity = YES;
             treetop.name = @"treetop";
@@ -312,6 +317,16 @@ CGFloat rate;
     if (firstBody.categoryBitMask == lemmingCategory && secondBody.categoryBitMask == sceneryCategory) {
         rate *= -1;
     }
+    if((firstBody.categoryBitMask == objectCategory && secondBody.categoryBitMask == cliffCategory) || (firstBody.categoryBitMask == cliffCategory && secondBody.categoryBitMask == objectCategory)){
+        SKSpriteNode* treetop = (SKSpriteNode *)[[self childNodeWithName:@"world"] childNodeWithName:@"treetop"];
+    SKSpriteNode* stump = (SKSpriteNode *)[[self childNodeWithName:@"world"] childNodeWithName:@"stump"];
+
+       
+        for(SKSpriteNode* lemming in lemmingArray)
+        [lemming.physicsBody setVelocity:CGVectorMake(15, 15)];
+        
+    }
+
 }
 
 -(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
