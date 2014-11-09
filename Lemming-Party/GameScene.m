@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "CaveScene.h"
+
 @implementation GameScene
 
 // Bitmasks
@@ -238,7 +239,7 @@ AVAudioPlayer *player;
 }
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch* touch = [touches anyObject];
-    CGPoint location = [touch locationInNode:self];
+    CGPoint location = [touch locationInNode:[self childNodeWithName:@"world"]];
     SKPhysicsBody* body = [self.physicsWorld bodyAtPoint:location];
     SKNode *node = [self nodeAtPoint:location];
 
@@ -490,6 +491,9 @@ AVAudioPlayer *player;
         } else {
             //[lemming.physicsBody applyImpulse:CGVectorMake(lemming.physicsBody.velocity.dx/2, 0.0)];
         }
+        if (lemmingArray.count == 0) {
+            [self transitionToCave];
+        }
     }
     
     for (SKSpriteNode *star in starArray) {
@@ -550,6 +554,13 @@ AVAudioPlayer *player;
             [queuePlayer insertItem:obj afterItem:nil];
         }
     }
+}
+
+-(void)transitionToCave {
+    CaveScene *scene = [[CaveScene alloc] initWithSize:self.size];
+    SKTransition *transition = [SKTransition flipVerticalWithDuration:0.5];
+    scene.scaleMode = SKSceneScaleModeAspectFill;
+    [self.view presentScene:scene transition:transition];
 }
 
 @end
