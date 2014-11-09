@@ -52,46 +52,37 @@
     
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
-        for(int i = 0; i <3; i++){
-            
-            
-            SKSpriteNode *sand = [SKSpriteNode spriteNodeWithImageNamed:@"sand-particle"];
-            
-            sand.xScale = 2.0;
-            sand.yScale = 2.0;
-            float x = location.x+ (float)(2i);
-            float y = location.y + (float)(i);
-            sand.position = CGPointMake(x, y);
-            sand.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:sand.size];
-            sand.physicsBody.allowsRotation = NO;
-            [sandParticles addObject:sand];
-            [self addChild:sand];
-        }
-        [self performSelector:@selector(longPress:) withObject:[NSValue valueWithCGPoint:location] afterDelay:.5];
+       
+        [self createSand:location];
+            }
+    
+    
+}
+-(void) createSand:(CGPoint ) location{
+    for(int i = 0; i <3; i++){
+        
+        
+        SKSpriteNode *sand = [SKSpriteNode spriteNodeWithImageNamed:@"sand-particle"];
+        
+        sand.xScale = 2.0;
+        sand.yScale = 2.0;
+        float x = location.x+ (float)(2i);
+        float y = location.y + (float)(i);
+        sand.position = CGPointMake(x, y);
+        float width = sand.size.width;
+        sand.physicsBody = [SKPhysicsBody bodyWithEdgeFromPoint:CGPointMake(0, 0) toPoint:CGPointMake(width, 0)];
+        sand.physicsBody.allowsRotation = NO;
+        
+        [sandParticles addObject:sand];
+        [self addChild:sand];
     }
-    
-    
+
 }
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
-        for(int i = 0; i <3; i++){
-            
-            
-            SKSpriteNode *sand = [SKSpriteNode spriteNodeWithImageNamed:@"sand-particle"];
-            
-            sand.xScale = 2.0;
-            sand.yScale = 2.0;
-            float x = location.x+ (float)(2i);
-            float y = location.y + (float)(i);
-            sand.position = CGPointMake(x, y);
-            sand.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:sand.size];
-            sand.physicsBody.allowsRotation = NO;
-            
-            [sandParticles addObject:sand];
-            [self addChild:sand];
-        }
+        [self createSand:location];
         
     }
 }
