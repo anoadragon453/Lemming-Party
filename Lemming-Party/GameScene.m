@@ -44,13 +44,13 @@ CGFloat rate;
     // Create the background
     SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"sky.png"];
     background.position = CGPointMake(360, 320);
-    [myWorld addChild:background];
+    [self addChild:background];
     
     // Create the planet
     SKSpriteNode *planet = [SKSpriteNode spriteNodeWithImageNamed:@"planet.png"];
     planet.position = CGPointMake(screenRect.size.width/2, screenRect.size.height/2);
     planet.alpha = 0.7;
-    [background addChild:planet];
+    [self addChild:planet];
     
     // Create the floor
     SKSpriteNode *floor = [SKSpriteNode spriteNodeWithImageNamed:@"platform.png"];
@@ -61,20 +61,29 @@ CGFloat rate;
     floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1900, 180)];
     floor.physicsBody.dynamic = NO;
     floor.physicsBody.categoryBitMask = sceneryCategory;
-    [self addChild:floor];
+    [myWorld addChild:floor];
     
     // Create the cliff
     SKSpriteNode *cliff = [SKSpriteNode spriteNodeWithImageNamed:@"cliff.png"];
-    cliff.position = CGPointMake(900, 300);
+    cliff.position = CGPointMake(900, 250);
     cliff.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"cliff.png"]];
     cliff.physicsBody = [SKPhysicsBody bodyWithTexture:cliff.texture size:cliff.texture.size];
     cliff.physicsBody.dynamic = NO;
     floor.physicsBody.categoryBitMask = sceneryCategory;
     [myWorld addChild:cliff];
+    for(int i = 1; i <6; i++){
+    SKSpriteNode *cliffground = [SKSpriteNode spriteNodeWithImageNamed:@"cliff ground.png"];
+    cliffground.position = CGPointMake(850+i*(cliff.size.width-50), 250);
+    cliffground.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"cliff ground.png"]];
+    cliffground.physicsBody = [SKPhysicsBody bodyWithTexture:cliffground.texture size:cliffground.texture.size];
+    cliffground.physicsBody.dynamic = NO;
+    floor.physicsBody.categoryBitMask = sceneryCategory;
+    [myWorld addChild:cliffground];
+    }
     
     // Create the spaceship
     SKSpriteNode *spaceship = [SKSpriteNode spriteNodeWithImageNamed:@"spaceship.png"];
-    spaceship.position = CGPointMake(100, 350);
+    spaceship.position = CGPointMake(100, 280);
     spaceship.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"spaceship.png"]];
     spaceship.size = CGSizeMake(spaceship.size.width/1.25, spaceship.size.height/1.25);
     

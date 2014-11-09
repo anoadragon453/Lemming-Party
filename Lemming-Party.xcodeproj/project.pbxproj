@@ -22,7 +22,6 @@
 		49AE59911A0EFC6000798B97 /* platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 49AE59901A0EFC6000798B97 /* platform.png */; };
 		49AE59931A0EFECC00798B97 /* lemming.png in Resources */ = {isa = PBXBuildFile; fileRef = 49AE59921A0EFECC00798B97 /* lemming.png */; };
 		49D068111A0F149100D4E21A /* cliff.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068101A0F149100D4E21A /* cliff.png */; };
-		7EB4D1BD1A0F2E68004462D4 /* shit tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB4D1BC1A0F2E67004462D4 /* shit tree.png */; };
 		49D068131A0F168E00D4E21A /* planet.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068121A0F168E00D4E21A /* planet.png */; };
 		49D068171A0F1BC000D4E21A /* cave goes on.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068141A0F1BC000D4E21A /* cave goes on.png */; };
 		49D068181A0F1BC000D4E21A /* caveback.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068151A0F1BC000D4E21A /* caveback.png */; };
@@ -34,6 +33,8 @@
 		49D068281A0F26CB00D4E21A /* lemmingsicon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068231A0F26CB00D4E21A /* lemmingsicon-87.png */; };
 		49D068291A0F26CB00D4E21A /* lemmingsicon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068241A0F26CB00D4E21A /* lemmingsicon-120.png */; };
 		49D0682A1A0F26CB00D4E21A /* lemmingsicon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D068251A0F26CB00D4E21A /* lemmingsicon-180.png */; };
+		7EB4D1BD1A0F2E68004462D4 /* shit tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB4D1BC1A0F2E67004462D4 /* shit tree.png */; };
+		7EB4D1BF1A0F53AE004462D4 /* cliff ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB4D1BE1A0F53AE004462D4 /* cliff ground.png */; };
 		7ED75BB81A0EFC9000DD97E2 /* sand-particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */; };
 /* End PBXBuildFile section */
 
@@ -70,7 +71,6 @@
 		49AE59901A0EFC6000798B97 /* platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform.png; sourceTree = "<group>"; };
 		49AE59921A0EFECC00798B97 /* lemming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lemming.png; sourceTree = "<group>"; };
 		49D068101A0F149100D4E21A /* cliff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cliff.png; sourceTree = "<group>"; };
-		7EB4D1BC1A0F2E67004462D4 /* shit tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shit tree.png"; sourceTree = "<group>"; };
 		49D068121A0F168E00D4E21A /* planet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planet.png; sourceTree = "<group>"; };
 		49D068141A0F1BC000D4E21A /* cave goes on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cave goes on.png"; sourceTree = "<group>"; };
 		49D068151A0F1BC000D4E21A /* caveback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = caveback.png; sourceTree = "<group>"; };
@@ -82,6 +82,8 @@
 		49D068231A0F26CB00D4E21A /* lemmingsicon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lemmingsicon-87.png"; sourceTree = "<group>"; };
 		49D068241A0F26CB00D4E21A /* lemmingsicon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lemmingsicon-120.png"; sourceTree = "<group>"; };
 		49D068251A0F26CB00D4E21A /* lemmingsicon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lemmingsicon-180.png"; sourceTree = "<group>"; };
+		7EB4D1BC1A0F2E67004462D4 /* shit tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shit tree.png"; sourceTree = "<group>"; };
+		7EB4D1BE1A0F53AE004462D4 /* cliff ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cliff ground.png"; sourceTree = "<group>"; };
 		7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sand-particle.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 		4998F6461A0EF81B0032C245 = {
 			isa = PBXGroup;
 			children = (
+				7EB4D1BE1A0F53AE004462D4 /* cliff ground.png */,
 				4998F6511A0EF81C0032C245 /* Lemming-Party */,
 				4998F6701A0EF81C0032C245 /* Lemming-PartyTests */,
 				4998F6501A0EF81C0032C245 /* Products */,
@@ -311,6 +314,7 @@
 				49D068111A0F149100D4E21A /* cliff.png in Resources */,
 				4998F65D1A0EF81C0032C245 /* GameScene.sks in Resources */,
 				7EB4D1BD1A0F2E68004462D4 /* shit tree.png in Resources */,
+				7EB4D1BF1A0F53AE004462D4 /* cliff ground.png in Resources */,
 				49D068191A0F1BC000D4E21A /* cavefront yeha.png in Resources */,
 				49AE59911A0EFC6000798B97 /* platform.png in Resources */,
 				49D068131A0F168E00D4E21A /* planet.png in Resources */,
