@@ -15,7 +15,8 @@ static const uint32_t sceneryCategory  = 0x1 << 0;
 static const uint32_t objectCategory = 0x1 << 1;
 static const uint32_t lemmingCategory = 0x1 << 2;
 static const uint32_t cliffCategory = 0x1 << 3;
-static const uint31_t caveCategory = 0x1 <<4;
+static const uint32_t caveCategory = 0x1 <<4;
+static const uint32_t triangleCategory = 0x1 << 5;
 
 int lemmingBackwards;
 CGFloat rate;
@@ -25,6 +26,7 @@ AVAudioPlayer *player;
     /* Setup your scene here */
     lemmingArray = [[NSMutableArray alloc] init];
     starArray = [[NSMutableArray alloc] init];
+    caveLemmings = 0;
     trees = [[NSMutableArray alloc] init];
     lemmingBackwards = NO;
     rate = .05;
@@ -386,7 +388,7 @@ AVAudioPlayer *player;
         lemming.physicsBody.allowsRotation = NO;
         lemming.physicsBody.categoryBitMask = lemmingCategory;
         lemming.physicsBody.contactTestBitMask = sceneryCategory;
-        lemming.physicsBody.collisionBitMask = sceneryCategory | objectCategory | lemmingCategory | caveCategory;
+        lemming.physicsBody.collisionBitMask = sceneryCategory | objectCategory | lemmingCategory | cliffCategory;
         lemming.physicsBody.velocity = self.physicsBody.velocity;
         lemming.physicsBody.linearDamping = 0;
         lemming.physicsBody.friction = .5;
@@ -426,7 +428,7 @@ AVAudioPlayer *player;
         stump.physicsBody.contactTestBitMask = 0;
         stump.physicsBody.allowsRotation = 0;
         
-        CGSize rectSize = CGSizeMake(treetop.texture.size.width-270, treetop.texture.size.height+100);
+        CGSize rectSize = CGSizeMake(treetop.texture.size.width-270, treetop.texture.size.height+150);
         
         treetop.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rectSize];
         treetop.physicsBody.affectedByGravity = NO;
@@ -439,10 +441,11 @@ AVAudioPlayer *player;
     }
     if ((firstBody.categoryBitMask == lemmingCategory && secondBody.categoryBitMask == caveCategory)){
         [firstBody.node removeFromParent];
-        
+        caveLemmings++;
     }
     if((firstBody.categoryBitMask == caveCategory && secondBody.categoryBitMask == lemmingCategory)) {
         [secondBody.node removeFromParent];
+        caveLemmings++;
 
     }
     
@@ -482,7 +485,10 @@ AVAudioPlayer *player;
 -(void)update:(CFTimeInterval)currentTime {
     
     /* Called before each frame is rendered */
-    
+    if(caveLemmings == 10){
+        //CaveScene *cavescene = [[CaveScene alloc] initWithSize:self.size];
+        
+    }
     for (SKSpriteNode *lemming in lemmingArray) {
         CMAccelerometerData* data = _myMotionManager.accelerometerData;
         if (fabs(data.acceleration.y) > 0.1) {

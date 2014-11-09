@@ -7,6 +7,7 @@
 //
 
 #import "MainMenuScene.h"
+#import "GameScene.h"
 
 @implementation MainMenuScene
 
@@ -58,6 +59,7 @@
     //if fire button touched, bring the rain
     if ([node.name isEqualToString:@"fireButtonNode"]) {
         //do whatever...
+        
     }
 }
 

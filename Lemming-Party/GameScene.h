@@ -19,6 +19,7 @@
 
 
 int treeTouched;
+int caveLemmings;
 
 NSString* treeName;
 SKSpriteNode *tree;
