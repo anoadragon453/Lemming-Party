@@ -13,10 +13,8 @@
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
     
-    // Get screen size and height
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
+    // Create a rectangle around the screen borders
+    self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
     
     // Create the background
     SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"sky.png"];
@@ -27,7 +25,18 @@
     SKSpriteNode *floor = [SKSpriteNode spriteNodeWithImageNamed:@"platform.png"];
     floor.position = CGPointMake(0, 80);
     floor.anchorPoint = CGPointMake(0, 0);
+    floor.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"platform.png"]];
+    floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(2400, 200)];
+    floor.physicsBody.dynamic = NO;
     [self addChild:floor];
+    
+    // Create the cliff
+    SKSpriteNode *cliff = [SKSpriteNode spriteNodeWithImageNamed:@"cliff.png"];
+    cliff.position = CGPointMake(900, 400);
+    cliff.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"cliff.png"]];
+    cliff.physicsBody = [SKPhysicsBody bodyWithTexture:cliff.texture size:cliff.texture.size];
+    cliff.physicsBody.dynamic = NO;
+    [self addChild:cliff];
     
     // SEND IN THE LEMMINGS!!!
     [self createAmountOfLemmings:10];
@@ -40,30 +49,12 @@
         lemming.position = CGPointMake(200, 300);
         [lemmingArray addObject:lemming];
         
-        
+        lemming.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"lemming.png"]];
+        lemming.physicsBody = [SKPhysicsBody bodyWithTexture:lemming.texture size:lemming.texture.size];
+        lemming.physicsBody.allowsRotation = NO;
         
         [self addChild:lemming];
         
-    }
-}
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
     }
 }
 
