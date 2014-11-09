@@ -22,7 +22,7 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     
     // Set up the gravity
     [[self physicsWorld] setGravity:CGVectorMake(0.0, -2.0)];
-    sandParticles = [[NSMutableArray alloc] init] ;
+    
     stillHolding = true;
     
     // Create a rectangle around the screen borders
@@ -106,14 +106,14 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
-        [self createSand:location];
+       // [self createSand:location];
         
     }
 }
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(longPress:) object:[NSValue valueWithCGPoint:location]];
+
     }
     
 }
