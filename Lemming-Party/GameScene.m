@@ -11,13 +11,18 @@
 @implementation GameScene
 
 // Bitmasks
-static const uint32_t sceneryCategory  = 0x1 << 0;  // 00000000000000000000000000000001
-static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000000100
+static const uint32_t sceneryCategory  = 0x1 << 0;
+static const uint32_t objectCategory = 0x1 << 1;
+static const uint32_t lemmingCategory = 0x1 << 2;
+
+int lemmingBackwards;
+CGFloat rate;
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
     lemmingArray = [[NSMutableArray alloc] init];
-    
+    lemmingBackwards = NO;
+    rate = .05;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     
     // Set up the gravity
@@ -25,6 +30,7 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     
     treeTouched = 0;
     treeName = @"tree";
+    
     // Create a rectangle around the screen borders
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
     self.physicsWorld.contactDelegate = self;
@@ -65,22 +71,24 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     spaceship.size = CGSizeMake(spaceship.size.width/1.25, spaceship.size.height/1.25);
     
     [self addChild:spaceship];
-    //Create the tree
-   SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"shit tree"];
-   // tree.anchorPoint = CGPointMake(0, 0);
-    tree.position = CGPointMake(518, 250);
-    tree.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"shit tree.png"]];
-   // CGSize treeBodySize = CGSizeMake(30, 130);
-    tree.physicsBody = [SKPhysicsBody bodyWithTexture:tree.texture size:tree.size];
-
-   
-
-    tree.physicsBody.allowsRotation = NO;
-    tree.physicsBody.categoryBitMask = objectCategory;
-    tree.name = treeName;
-  
-    [self addChild:tree];
     
+    //Create the tree
+    SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"shit tree"];
+    // tree.anchorPoint = CGPointMake(0, 0);
+    tree.position = CGPointMake(518, 350);
+    tree.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"shit tree.png"]];
+    // CGSize treeBodySize = CGSizeMake(30, 130);
+    tree.physicsBody = [SKPhysicsBody bodyWithTexture:tree.texture size:tree.size];
+    
+    
+    tree.physicsBody.allowsRotation = NO;
+    tree.physicsBody.mass = 9999999999;
+    tree.physicsBody.categoryBitMask = objectCategory;
+    tree.physicsBody.collisionBitMask = lemmingCategory;
+    tree.physicsBody.dynamic = NO;
+    tree.name = treeName;
+    
+    [self addChild:tree];
     
     // SEND IN THE LEMMINGS!!!
     [self createAmountOfLemmings:10];
@@ -107,7 +115,7 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
         lemming.physicsBody.allowsRotation = NO;
         lemming.physicsBody.categoryBitMask = lemmingCategory;
         lemming.physicsBody.contactTestBitMask = sceneryCategory;
-        lemming.physicsBody.collisionBitMask = sceneryCategory;
+        lemming.physicsBody.collisionBitMask = sceneryCategory | objectCategory;
         lemming.physicsBody.velocity = self.physicsBody.velocity;
         lemming.physicsBody.linearDamping = 0;
         
@@ -134,9 +142,20 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
 }
 
 -(void)didBeginContact:(SKPhysicsContact *)contact {
-    if (contact.bodyA.categoryBitMask == lemmingCategory && contact.bodyB.categoryBitMask == sceneryCategory) {
-        CGVector relativeVelocity = CGVectorMake(200-contact.bodyA.velocity.dx, 200-contact.bodyA.velocity.dy);
-        contact.bodyA.velocity=CGVectorMake(contact.bodyA.velocity.dx+relativeVelocity.dx*-.05, contact.bodyA.velocity.dy+relativeVelocity.dy*-.05);
+    // 1 Create local variables for two physics bodies
+    SKPhysicsBody* firstBody;
+    SKPhysicsBody* secondBody;
+    // 2 Assign the two physics bodies so that the one with the lower category is always stored in firstBody
+    if (contact.bodyA.categoryBitMask > contact.bodyB.categoryBitMask) {
+        firstBody = contact.bodyA;
+        secondBody = contact.bodyB;
+    } else {
+        firstBody = contact.bodyB;
+        secondBody = contact.bodyA;
+    }
+    
+    if (firstBody.categoryBitMask == lemmingCategory && secondBody.categoryBitMask == sceneryCategory) {
+        rate *= -1;
     }
 }
 
@@ -144,10 +163,6 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     
     /* Called before each frame is rendered */
     for (SKSpriteNode *lemming in lemmingArray) {
-        CGFloat rate = .05;
-        if (lemming.physicsBody.velocity.dx < 0) { // if the lemming is going backwards
-            rate *= -1; // reverse it
-        }
         CGVector relativeVelocity = CGVectorMake(200-lemming.physicsBody.velocity.dx, 200-lemming.physicsBody.velocity.dy);
         lemming.physicsBody.velocity=CGVectorMake(lemming.physicsBody.velocity.dx+relativeVelocity.dx*rate, lemming.physicsBody.velocity.dy+relativeVelocity.dy*rate);
     }
