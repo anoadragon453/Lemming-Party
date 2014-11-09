@@ -28,6 +28,7 @@ AVAudioPlayer *player;
     starArray = [[NSMutableArray alloc] init];
     caveLemmings = 0;
     trees = [[NSMutableArray alloc] init];
+    treeTouched = 0;
     lemmingBackwards = NO;
     rate = .05;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -181,6 +182,7 @@ AVAudioPlayer *player;
     tree.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"tree1.png"]];
     // CGSize treeBodySize = CGSizeMake(30, 130);
     tree.physicsBody = [SKPhysicsBody bodyWithTexture:tree.texture size:tree.size];
+    tree.name = treeName;
     [trees addObject:tree];
     for(int i = 0; i <10 ; i++){
         SKSpriteNode *lemmingLife = [SKSpriteNode spriteNodeWithImageNamed:@"lemming"];
@@ -239,7 +241,7 @@ AVAudioPlayer *player;
 }
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch* touch = [touches anyObject];
-    CGPoint location = [touch locationInNode:self];
+    CGPoint location = [touch locationInNode:[self childNodeWithName:@"world"]];
     SKPhysicsBody* body = [self.physicsWorld bodyAtPoint:location];
     SKNode *node = [self nodeAtPoint:location];
 
@@ -259,7 +261,7 @@ AVAudioPlayer *player;
             
             
             
-            SKSpriteNode *tree2 = [SKSpriteNode spriteNodeWithImageNamed:@"tree2.png"];
+            SKSpriteNode *tree2 = [SKSpriteNode spriteNodeWithImageNamed:@"tree2"];
             // tree.anchorPoint = CGPointMake(0, 0);
             tree2.position = CGPointMake(435, 350);
             tree2.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"tree2.png"]];
@@ -281,7 +283,7 @@ AVAudioPlayer *player;
             [tree removeFromParent];
             [trees removeAllObjects];
             
-            SKSpriteNode *tree3 = [SKSpriteNode spriteNodeWithImageNamed:@"tree3.png"];
+            SKSpriteNode *tree3 = [SKSpriteNode spriteNodeWithImageNamed:@"tree3"];
             // tree.anchorPoint = CGPointMake(0, 0);
             tree3.position = CGPointMake(435, 350);
             tree3.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"tree3.png"]];
@@ -304,7 +306,7 @@ AVAudioPlayer *player;
             [tree removeFromParent];
             [trees removeAllObjects];
             
-            SKSpriteNode *stump = [SKSpriteNode spriteNodeWithImageNamed:@"treestump.png"];
+            SKSpriteNode *stump = [SKSpriteNode spriteNodeWithImageNamed:@"treestump"];
             
             stump.position = CGPointMake(435, 370-height/2);
             
