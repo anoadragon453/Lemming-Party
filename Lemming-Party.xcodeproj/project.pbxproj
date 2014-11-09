@@ -38,6 +38,8 @@
 		7EB4D1C31A0F56DC004462D4 /* tree2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB4D1C21A0F56DC004462D4 /* tree2.png */; };
 		7EB4D1C51A0F5822004462D4 /* platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB4D1C41A0F5822004462D4 /* platform.png */; };
 		7EB4D1C71A0F5C66004462D4 /* tree3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB4D1C61A0F5C66004462D4 /* tree3.png */; };
+		7EB4D1CA1A0F5F1F004462D4 /* treestump.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB4D1C81A0F5F1F004462D4 /* treestump.png */; };
+		7EB4D1CB1A0F5F1F004462D4 /* treetop.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EB4D1C91A0F5F1F004462D4 /* treetop.png */; };
 		7ED75BB81A0EFC9000DD97E2 /* sand-particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +92,8 @@
 		7EB4D1C21A0F56DC004462D4 /* tree2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree2.png; sourceTree = "<group>"; };
 		7EB4D1C41A0F5822004462D4 /* platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform.png; sourceTree = "<group>"; };
 		7EB4D1C61A0F5C66004462D4 /* tree3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree3.png; sourceTree = "<group>"; };
+		7EB4D1C81A0F5F1F004462D4 /* treestump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = treestump.png; sourceTree = "<group>"; };
+		7EB4D1C91A0F5F1F004462D4 /* treetop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = treetop.png; sourceTree = "<group>"; };
 		7ED75BB71A0EFC9000DD97E2 /* sand-particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sand-particle.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +141,8 @@
 				4998F6571A0EF81C0032C245 /* AppDelegate.m */,
 				4998F6591A0EF81C0032C245 /* GameScene.h */,
 				4998F65A1A0EF81C0032C245 /* GameScene.m */,
+				7EB4D1C81A0F5F1F004462D4 /* treestump.png */,
+				7EB4D1C91A0F5F1F004462D4 /* treetop.png */,
 				7EB4D1C61A0F5C66004462D4 /* tree3.png */,
 				7EB4D1C41A0F5822004462D4 /* platform.png */,
 				7EB4D1C21A0F56DC004462D4 /* tree2.png */,
@@ -327,6 +333,7 @@
 				4998F65D1A0EF81C0032C245 /* GameScene.sks in Resources */,
 				7EB4D1BD1A0F2E68004462D4 /* shit tree.png in Resources */,
 				7EB4D1BF1A0F53AE004462D4 /* cliff ground.png in Resources */,
+				7EB4D1CB1A0F5F1F004462D4 /* treetop.png in Resources */,
 				49D068191A0F1BC000D4E21A /* cavefront yeha.png in Resources */,
 				49D068131A0F168E00D4E21A /* planet.png in Resources */,
 				7EB4D1C11A0F567A004462D4 /* tree1.png in Resources */,
@@ -334,6 +341,7 @@
 				4998F6631A0EF81C0032C245 /* Main.storyboard in Resources */,
 				49D068291A0F26CB00D4E21A /* lemmingsicon-120.png in Resources */,
 				49D068281A0F26CB00D4E21A /* lemmingsicon-87.png in Resources */,
+				7EB4D1CA1A0F5F1F004462D4 /* treestump.png in Resources */,
 				49D068271A0F26CB00D4E21A /* lemmingsicon-80.png in Resources */,
 				49D0682A1A0F26CB00D4E21A /* lemmingsicon-180.png in Resources */,
 			);

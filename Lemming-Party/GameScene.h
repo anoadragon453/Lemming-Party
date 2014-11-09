@@ -17,6 +17,7 @@
 
 
 int treeTouched;
+
 NSString* treeName;
 NSMutableArray *lemmingArray;
 NSMutableArray *lemmingLives;

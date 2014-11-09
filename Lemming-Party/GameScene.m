@@ -66,6 +66,7 @@ CGFloat rate;
     
     // Create the cliff
     SKSpriteNode *cliff = [SKSpriteNode spriteNodeWithImageNamed:@"cliff.png"];
+    cliff.name = @"cliff";
     cliff.position = CGPointMake(900, 250);
     cliff.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"cliff.png"]];
     cliff.physicsBody = [SKPhysicsBody bodyWithTexture:cliff.texture size:cliff.texture.size];
@@ -92,7 +93,7 @@ CGFloat rate;
     //Create the tree
     SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"tree1"];
     // tree.anchorPoint = CGPointMake(0, 0);
-    tree.position = CGPointMake(518, 350);
+    tree.position = CGPointMake(435, 350);
     tree.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"tree1.png"]];
     // CGSize treeBodySize = CGSizeMake(30, 130);
     tree.physicsBody = [SKPhysicsBody bodyWithTexture:tree.texture size:tree.size];
@@ -153,7 +154,7 @@ CGFloat rate;
     
         SKSpriteNode *tree2 = [SKSpriteNode spriteNodeWithImageNamed:@"tree2"];
         // tree.anchorPoint = CGPointMake(0, 0);
-        tree2.position = CGPointMake(518, 350);
+        tree2.position = CGPointMake(435, 350);
         tree2.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"tree2.png"]];
         // CGSize treeBodySize = CGSizeMake(30, 130);
         tree2.physicsBody = [SKPhysicsBody bodyWithTexture:tree2.texture size:tree2.size];
@@ -178,7 +179,7 @@ CGFloat rate;
             
             SKSpriteNode *tree3 = [SKSpriteNode spriteNodeWithImageNamed:@"tree3"];
             // tree.anchorPoint = CGPointMake(0, 0);
-            tree3.position = CGPointMake(518, 350);
+            tree3.position = CGPointMake(435, 350);
             tree3.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"tree3.png"]];
             // CGSize treeBodySize = CGSizeMake(30, 130);
             tree3.physicsBody = [SKPhysicsBody bodyWithTexture:tree3.texture size:tree3.size];
@@ -193,6 +194,60 @@ CGFloat rate;
             return;
             
         }
+        if(treeTouched == 3){
+            SKSpriteNode *tree = [trees objectAtIndex:0];
+            float height = tree.texture.size.height;
+            [tree removeFromParent];
+            [trees removeAllObjects];
+            
+            
+            
+            
+            SKSpriteNode *stump = [SKSpriteNode spriteNodeWithImageNamed:@"treestump"];
+  
+            stump.position = CGPointMake(435, 370-height/2);
+            
+            stump.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"treestump.png"]];
+            // CGSize treeBodySize = CGSizeMake(30, 130);
+            stump.physicsBody = [SKPhysicsBody bodyWithTexture:stump.texture size:stump.size];
+           // stump.anchorPoint = CGPointMake(0, 0);
+            stump.physicsBody.allowsRotation = NO;
+            stump.physicsBody.mass = 9999999999;
+            stump.physicsBody.categoryBitMask = objectCategory;
+            stump.physicsBody.collisionBitMask = lemmingCategory;
+            stump.physicsBody.collisionBitMask = objectCategory;
+            stump.physicsBody.dynamic = YES;
+            stump.physicsBody.affectedByGravity = NO;
+            stump.name = @"stump";
+           // [trees addObject:tree3];
+            [[self childNodeWithName:@"world"] addChild:stump];
+            
+            SKSpriteNode *treetop = [SKSpriteNode spriteNodeWithImageNamed:@"treetop"];
+         
+            treetop.position = CGPointMake(435, (treetop.size.height)/2+(stump.texture.size.height)+(390-height/2));
+            
+            treetop.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"treetop"]];
+            // CGSize treeBodySize = CGSizeMake(30, 130);
+            
+            treetop.physicsBody = [SKPhysicsBody bodyWithTexture:treetop.texture size:treetop.size];
+            //treetop.anchorPoint = CGPointMake(0, 0);
+            //treetop.physicsBody.allowsRotation = NO;
+            treetop.physicsBody.mass = 15;
+            treetop.physicsBody.categoryBitMask = objectCategory;
+            treetop.physicsBody.collisionBitMask = lemmingCategory;
+            treetop.physicsBody.collisionBitMask = objectCategory;
+                       [treetop.physicsBody applyTorque:5.0];
+            treetop.physicsBody.dynamic = YES;
+            treetop.physicsBody.affectedByGravity = YES;
+            treetop.name = @"treetop";
+            // [trees addObject:tree3];
+            [[self childNodeWithName:@"world"] addChild:treetop];
+           
+
+            return;
+            
+        }
+
 
     }
 }
