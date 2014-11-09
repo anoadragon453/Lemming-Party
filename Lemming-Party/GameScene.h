@@ -12,4 +12,5 @@
 
 @end
 
-NSMutableArray *lemmingArray;
+NSMutableArray *sandParticles ;
+BOOL stillHolding;
