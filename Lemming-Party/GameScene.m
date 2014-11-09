@@ -181,9 +181,20 @@ AVAudioPlayer *player;
     
     [myWorld addChild:tree];
     
+    [self initializeAccelerometerTracking];
+    
     // SEND IN THE LEMMINGS!!!
-    [self createAmountOfLemmings:0 withWorld:myWorld];
+    [self createAmountOfLemmings:10 withWorld:myWorld];
 }
+
+-(void)initializeAccelerometerTracking {
+    _myMotionManager = [[CMMotionManager alloc] init];
+    _myMotionManager.accelerometerUpdateInterval = 0.2; // tweak the sensitivity of intervals
+    [_myMotionManager startAccelerometerUpdates];
+    
+    // do [_myMotionManager stopAccelerometerUpdates]; when we're done
+}
+
 
 
 -(void) killLemming{
@@ -424,8 +435,14 @@ AVAudioPlayer *player;
     /* Called before each frame is rendered */
     
     for (SKSpriteNode *lemming in lemmingArray) {
-        CGVector relativeVelocity = CGVectorMake(200-lemming.physicsBody.velocity.dx, 200-lemming.physicsBody.velocity.dy);
-        lemming.physicsBody.velocity=CGVectorMake(lemming.physicsBody.velocity.dx+relativeVelocity.dx*rate, lemming.physicsBody.velocity.dy+relativeVelocity.dy*rate);
+        CMAccelerometerData* data = _myMotionManager.accelerometerData;
+        if (fabs(data.acceleration.y) > 0.1) {
+            float yAcceleration = 20.0 * data.acceleration.y;
+            float randomAccel = [self getRandomNumberBetween:1 to:100]/100.0;
+            [lemming.physicsBody applyForce:CGVectorMake(yAcceleration += randomAccel, 0.0)];
+        } else {
+            //[lemming.physicsBody applyImpulse:CGVectorMake(lemming.physicsBody.velocity.dx/2, 0.0)];
+        }
     }
     
     for (SKSpriteNode *star in starArray) {
