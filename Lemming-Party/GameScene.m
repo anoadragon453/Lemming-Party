@@ -80,8 +80,19 @@ CGFloat rate;
     tree.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"shit tree.png"]];
     // CGSize treeBodySize = CGSizeMake(30, 130);
     tree.physicsBody = [SKPhysicsBody bodyWithTexture:tree.texture size:tree.size];
-    
-    
+    for(int i = 0; i <10 ; i++){
+        SKSpriteNode *lemmingLife = [SKSpriteNode spriteNodeWithImageNamed:@"lemming"];
+        lemmingLife.position = CGPointMake(20*(i+1), 650);
+        //lemmingLife.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"lemming.png"]];
+        lemmingLife.xScale = .85;
+        lemmingLife.yScale = .85;
+        [lemmingLives addObject:lemmingLife];
+        [self addChild:lemmingLife];
+        
+    }
+
+   
+
     tree.physicsBody.allowsRotation = NO;
     tree.physicsBody.mass = 9999999999;
     tree.physicsBody.categoryBitMask = objectCategory;
