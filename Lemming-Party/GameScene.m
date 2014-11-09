@@ -13,7 +13,7 @@
 // Bitmasks
 static const uint32_t sceneryCategory  = 0x1 << 0;  // 00000000000000000000000000000001
 static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000000100
-
+static const uint32_t objectCategory = 0x1 << 1;
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
     lemmingArray = [[NSMutableArray alloc] init];
@@ -24,6 +24,7 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     [[self physicsWorld] setGravity:CGVectorMake(0.0, -2.0)];
     
     treeTouched = 0;
+    lemmingLives = [[NSMutableArray alloc] init];
     treeName = @"tree";
     // Create a rectangle around the screen borders
     self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
@@ -68,15 +69,28 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
     //Create the tree
    SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"shit tree"];
    // tree.anchorPoint = CGPointMake(0, 0);
-    tree.position = CGPointMake(518, 250);
+    tree.position = CGPointMake(518, 350);
     tree.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"shit tree.png"]];
    // CGSize treeBodySize = CGSizeMake(30, 130);
     tree.physicsBody = [SKPhysicsBody bodyWithTexture:tree.texture size:tree.size];
+    for(int i = 0; i <10 ; i++){
+        SKSpriteNode *lemmingLife = [SKSpriteNode spriteNodeWithImageNamed:@"lemming"];
+        lemmingLife.position = CGPointMake(20*(i+1), 650);
+        //lemmingLife.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"lemming.png"]];
+        lemmingLife.xScale = .85;
+        lemmingLife.yScale = .85;
+        [lemmingLives addObject:lemmingLife];
+        [self addChild:lemmingLife];
+        
+    }
 
    
 
     tree.physicsBody.allowsRotation = NO;
+    tree.physicsBody.mass = 9999;
+    tree.physicsBody.dynamic = NO;
     tree.physicsBody.categoryBitMask = objectCategory;
+    tree.physicsBody.collisionBitMask = lemmingCategory;
     tree.name = treeName;
   
     [self addChild:tree];
@@ -107,7 +121,7 @@ static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000
         lemming.physicsBody.allowsRotation = NO;
         lemming.physicsBody.categoryBitMask = lemmingCategory;
         lemming.physicsBody.contactTestBitMask = sceneryCategory;
-        lemming.physicsBody.collisionBitMask = sceneryCategory;
+        lemming.physicsBody.collisionBitMask = sceneryCategory | objectCategory;
         lemming.physicsBody.velocity = self.physicsBody.velocity;
         lemming.physicsBody.linearDamping = 0;
         

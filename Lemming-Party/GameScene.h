@@ -19,6 +19,6 @@
 int treeTouched;
 NSString* treeName;
 NSMutableArray *lemmingArray;
-
+NSMutableArray *lemmingLives;
 // World node - add every sprite to this
 SKNode *world;
