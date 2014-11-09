@@ -10,6 +10,11 @@
 
 @implementation GameScene
 
+// Bitmasks
+static const uint32_t sceneryCategory  = 0x1 << 0;  // 00000000000000000000000000000001
+static const uint32_t sandCategory = 0x1 << 1; // 00000000000000000000000000000010
+static const uint32_t lemmingCategory = 0x1 << 2;  // 00000000000000000000000000000100
+
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
     
@@ -33,6 +38,7 @@
     floor.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"platform.png"]];
     floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(2400, 200)];
     floor.physicsBody.dynamic = NO;
+    floor.physicsBody.categoryBitMask = sceneryCategory;
     [self addChild:floor];
     
     // Create the cliff
@@ -41,7 +47,15 @@
     cliff.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"cliff.png"]];
     cliff.physicsBody = [SKPhysicsBody bodyWithTexture:cliff.texture size:cliff.texture.size];
     cliff.physicsBody.dynamic = NO;
+    floor.physicsBody.categoryBitMask = sceneryCategory;
     [self addChild:cliff];
+    
+    // Create the spaceship
+    SKSpriteNode *spaceship = [SKSpriteNode spriteNodeWithImageNamed:@"spaceship.png"];
+    spaceship.position = CGPointMake(100, 320);
+    spaceship.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"spaceship.png"]];
+    
+    [self addChild:spaceship];
     
     // SEND IN THE LEMMINGS!!!
     [self createAmountOfLemmings:10];
@@ -52,7 +66,7 @@
     
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
-        for(int i = 0; i <3; i++){
+        for(int i = 0; i < 3; i++){
             
             
             SKSpriteNode *sand = [SKSpriteNode spriteNodeWithImageNamed:@"sand-particle"];
@@ -132,6 +146,7 @@
         lemming.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"lemming.png"]];
         lemming.physicsBody = [SKPhysicsBody bodyWithTexture:lemming.texture size:lemming.texture.size];
         lemming.physicsBody.allowsRotation = NO;
+        lemming.physicsBody.categoryBitMask = lemmingCategory;
         
         [self addChild:lemming];
         
