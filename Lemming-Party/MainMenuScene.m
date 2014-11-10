@@ -61,7 +61,7 @@
         //do whatever...
         NSLog(@"Button Pushed");
         GameScene *scene = [[GameScene alloc] initWithSize:self.size];
-        SKTransition *transition = [SKTransition flipVerticalWithDuration:0.5];
+        SKTransition *transition = [SKTransition flipVerticalWithDuration:1.5];
         scene.scaleMode = SKSceneScaleModeAspectFill;
         [self.view presentScene:scene transition:transition];
     }

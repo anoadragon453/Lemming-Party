@@ -107,16 +107,6 @@ AVAudioPlayer *player;
     floor.physicsBody.categoryBitMask = sceneryCategory;
     [myWorld addChild:floor];
     
-    // Create the cliff
-    SKSpriteNode *cliff = [SKSpriteNode spriteNodeWithImageNamed:@"cliff.png"];
-    cliff.name = @"cliff";
-    cliff.position = CGPointMake(900, 250);
-    cliff.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"cliff.png"]];
-    cliff.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(cliff.texture.size.width - 20, cliff.texture.size.height) ];
-    cliff.physicsBody.dynamic = NO;
-    cliff.physicsBody.categoryBitMask = cliffCategory;
-    cliff.physicsBody.collisionBitMask = objectCategory;
-    [myWorld addChild:cliff];
     for(int i = 1; i <6; i++){
         SKSpriteNode *caveEntranceBack;
         SKSpriteNode *caveEntranceFront;
@@ -127,24 +117,13 @@ AVAudioPlayer *player;
             caveEntranceBack = [SKSpriteNode spriteNodeWithImageNamed:@"caveback.png"];
             caveEntranceBack.texture = [SKTexture textureWithImageNamed:@"caveback.png"];
             
-            caveEntranceBack.position = CGPointMake(850+i*(cliff.size.width-50), 460);
+            caveEntranceBack.position = CGPointMake(630, 190);
             [myWorld addChild:caveEntranceBack];
         }
         
-        SKSpriteNode *cliffground = [SKSpriteNode spriteNodeWithImageNamed:@"cliff ground.png"];
-        cliffground.position = CGPointMake(850+i*(cliff.size.width-50), 250);
-        cliffground.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"cliff ground.png"]];
-        cliffground.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:cliffground.texture.size];
-        cliffground.physicsBody.dynamic = NO;
-        cliffground.physicsBody.categoryBitMask = cliffCategory;
-        cliffground.physicsBody.collisionBitMask = lemmingCategory | objectCategory;
-        cliffground.physicsBody.contactTestBitMask = lemmingCategory | objectCategory;
-        
+     
         floor.physicsBody.categoryBitMask = sceneryCategory;
-        
-        [myWorld addChild:cliffground];
-        
-        // Add the cave
+                // Add the cave
         if (i == 3) {
             NSLog(@"Adding cave entrance...");
             
@@ -178,15 +157,7 @@ AVAudioPlayer *player;
     spaceship.size = CGSizeMake(spaceship.size.width/1.25, spaceship.size.height/1.25);
     
     [myWorld addChild:spaceship];
-    //Create the tree
-    SKSpriteNode *tree = [SKSpriteNode spriteNodeWithImageNamed:@"tree1"];
-    // tree.anchorPoint = CGPointMake(0, 0);
-    tree.position = CGPointMake(435, 350);
-    tree.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"tree1.png"]];
-    // CGSize treeBodySize = CGSizeMake(30, 130);
-    tree.physicsBody = [SKPhysicsBody bodyWithTexture:tree.texture size:tree.size];
-    tree.name = treeName;
-    [trees addObject:tree];
+    
     for(int i = 0; i <10 ; i++){
         SKSpriteNode *lemmingLife = [SKSpriteNode spriteNodeWithImageNamed:@"lemming"];
         lemmingLife.position = CGPointMake(20*(i+1), 650);
@@ -200,14 +171,6 @@ AVAudioPlayer *player;
     
     
     
-    tree.physicsBody.allowsRotation = NO;
-    tree.physicsBody.mass = 9999999999;
-    tree.physicsBody.categoryBitMask = objectCategory;
-    tree.physicsBody.collisionBitMask = lemmingCategory;
-    tree.physicsBody.dynamic = NO;
-    tree.name = treeName;
-    
-    [myWorld addChild:tree];
     
     [self initializeAccelerometerTracking];
     
@@ -250,16 +213,16 @@ AVAudioPlayer *player;
 
   
 
-    if(body && [body.node.name isEqualToString:@"tree"]){
+    /*if(body && [body.node.name isEqualToString:@"tree"]){
         
         // Play woodcutting sound
-        [player play];
+       // [player play];
         
         treeTouched++;
         if(treeTouched == 1){
-            SKSpriteNode *tree = [trees objectAtIndex:0];
-            [tree removeFromParent];
-            [trees removeAllObjects];
+           // SKSpriteNode *tree = [trees objectAtIndex:0];
+           // [//tree removeFromParent];
+           // [trees removeAllObjects];
             
             
             
@@ -276,18 +239,23 @@ AVAudioPlayer *player;
             tree2.physicsBody.collisionBitMask = lemmingCategory;
             tree2.physicsBody.dynamic = NO;
             tree2.physicsBody.affectedByGravity = NO;
-            tree2.name = treeName;
+          //  tree2.name = treeName;
             [trees addObject:tree2];
-            [myWorld addChild:tree2];
+            tree2.zPosition = 9;
+            [myWorld addChild:tree2 ];
+            SKSpriteNode *tree = [trees objectAtIndex:0];
+           //  [tree removeFromParent];
+            // [trees removeAllObjects];
             return;
             
         }
         if(treeTouched == 2){
-            SKSpriteNode *tree = [trees objectAtIndex:0];
+           /* SKSpriteNode *tree = [trees objectAtIndex:0];
             [tree removeFromParent];
             [trees removeAllObjects];
+            */
             
-            SKSpriteNode *tree3 = [SKSpriteNode spriteNodeWithImageNamed:@"tree3"];
+            /*SKSpriteNode *tree3 = [SKSpriteNode spriteNodeWithImageNamed:@"tree3"];
             // tree.anchorPoint = CGPointMake(0, 0);
             tree3.position = CGPointMake(435, 350);
             tree3.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"tree3.png"]];
@@ -300,20 +268,21 @@ AVAudioPlayer *player;
             tree3.physicsBody.affectedByGravity = NO;
             tree3.physicsBody.dynamic = NO;
             tree3.name = treeName;
+            tree3.zPosition = 11;
             [trees addObject:tree3];
             [myWorld addChild:tree3];
             return;
             
         }
         if(treeTouched == 3){
-            SKSpriteNode *tree = [trees objectAtIndex:0];
-            float height = tree.texture.size.height;
-            [tree removeFromParent];
+            for(SKSpriteNode* tree in trees){
+                [tree removeFromParent];
+            }
             [trees removeAllObjects];
             
             SKSpriteNode *stump = [SKSpriteNode spriteNodeWithImageNamed:@"treestump"];
             
-            stump.position = CGPointMake(435, 370-height/2);
+            stump.position = CGPointMake(435, 182);
             
             stump.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"treestump.png"]];
             // CGSize treeBodySize = CGSizeMake(30, 130);
@@ -332,7 +301,7 @@ AVAudioPlayer *player;
             
             SKSpriteNode *treetop = [SKSpriteNode spriteNodeWithImageNamed:@"treetop.png"];
             
-            treetop.position = CGPointMake(440, (treetop.size.height)/2+(stump.texture.size.height)+(390-height/2));
+            treetop.position = CGPointMake(440, (treetop.size.height)/2+(stump.texture.size.height)+(200));
             
             treetop.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"treetop.png"]];
             // CGSize treeBodySize = CGSizeMake(30, 130);
@@ -359,7 +328,7 @@ AVAudioPlayer *player;
        
 
         
-    }
+    }*/
 
     
     NSLog(@"node.name: %@", node.name);
@@ -391,8 +360,8 @@ AVAudioPlayer *player;
         lemming.physicsBody = [SKPhysicsBody bodyWithTexture:lemming.texture size:lemming.texture.size];
         lemming.physicsBody.allowsRotation = NO;
         lemming.physicsBody.categoryBitMask = lemmingCategory;
-        lemming.physicsBody.contactTestBitMask = sceneryCategory;
-        lemming.physicsBody.collisionBitMask = sceneryCategory | objectCategory | lemmingCategory | cliffCategory;
+        lemming.physicsBody.contactTestBitMask = sceneryCategory | caveCategory;
+        lemming.physicsBody.collisionBitMask = sceneryCategory | objectCategory | lemmingCategory | cliffCategory | caveCategory;
         lemming.physicsBody.velocity = self.physicsBody.velocity;
         lemming.physicsBody.linearDamping = 0;
         lemming.physicsBody.friction = .5;
@@ -444,10 +413,24 @@ AVAudioPlayer *player;
         }
     }
     if ((firstBody.categoryBitMask == lemmingCategory && secondBody.categoryBitMask == caveCategory)){
+        if(caveLemmings == 9){
+            CaveScene *scene = [[CaveScene alloc] initWithSize:self.size];
+            SKTransition *transition = [SKTransition flipVerticalWithDuration:1.5];
+            scene.scaleMode = SKSceneScaleModeAspectFill;
+            [self.view presentScene:scene transition:transition];
+            
+        }
         [firstBody.node removeFromParent];
         caveLemmings++;
     }
     if((firstBody.categoryBitMask == caveCategory && secondBody.categoryBitMask == lemmingCategory)) {
+        if(caveLemmings == 9){
+            CaveScene *scene = [[CaveScene alloc] initWithSize:self.size];
+            SKTransition *transition = [SKTransition flipVerticalWithDuration:1.5];
+            scene.scaleMode = SKSceneScaleModeAspectFill;
+            [self.view presentScene:scene transition:transition];
+            
+        }
         [secondBody.node removeFromParent];
         caveLemmings++;
 
@@ -489,10 +472,7 @@ AVAudioPlayer *player;
 -(void)update:(CFTimeInterval)currentTime {
     
     /* Called before each frame is rendered */
-    if(caveLemmings == 10){
-        //CaveScene *cavescene = [[CaveScene alloc] initWithSize:self.size];
-        
-    }
+ 
     for (SKSpriteNode *lemming in lemmingArray) {
         CMAccelerometerData* data = _myMotionManager.accelerometerData;
         if (fabs(data.acceleration.y) > 0.1) {
